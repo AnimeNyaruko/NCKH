@@ -1,0 +1,25 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@font-face {
+  font-family: PaytoneOne;
+  src: url(/fonts/PaytoneOne-Regular.ttf);
+  font-weight: 400;
+}
+@font-face {
+  font-family: Carlito;
+  src: url(/fonts/Carlito-Regular.ttf);
+}
+.paytone-one {
+  font-family: PaytoneOne, sans-serif;
+}
+.paytone-one .bold {
+  font-weight: bold;
+}
+
+.carlito {
+  font-family: Carlito;
+}
+.carlito .bold {
+  font-weight: bold;
+}
