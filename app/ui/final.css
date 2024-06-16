@@ -562,6 +562,10 @@ video {
   position: relative;
 }
 
+.m-\[0\.1rem\] {
+  margin: 0.1rem;
+}
+
 .mx-auto {
   margin-left: auto;
   margin-right: auto;
@@ -569,6 +573,14 @@ video {
 
 .ml-\[2\.5rem\] {
   margin-left: 2.5rem;
+}
+
+.ml-auto {
+  margin-left: auto;
+}
+
+.mr-\[2\.5rem\] {
+  margin-right: 2.5rem;
 }
 
 .mt-\[25\%\] {
@@ -581,6 +593,14 @@ video {
 
 .flex {
   display: flex;
+}
+
+.aspect-square {
+  aspect-ratio: 1 / 1;
+}
+
+.aspect-\[640\/673\] {
+  aspect-ratio: 640/673;
 }
 
 .h-1\/4 {
@@ -608,8 +628,17 @@ video {
   height: 100%;
 }
 
+.h-min {
+  height: -moz-min-content;
+  height: min-content;
+}
+
 .h-screen {
   height: 100vh;
+}
+
+.h-\[90\%\] {
+  height: 90%;
 }
 
 .w-\[1rem\] {
@@ -618,6 +647,10 @@ video {
 
 .w-\[65\%\] {
   width: 65%;
+}
+
+.w-auto {
+  width: auto;
 }
 
 .w-fit {
@@ -629,8 +662,17 @@ video {
   width: 100%;
 }
 
+.w-max {
+  width: -moz-max-content;
+  width: max-content;
+}
+
 .w-screen {
   width: 100vw;
+}
+
+.cursor-pointer {
+  cursor: pointer;
 }
 
 .flex-col {
@@ -645,8 +687,20 @@ video {
   justify-content: center;
 }
 
+.rounded-2xl {
+  border-radius: 1rem;
+}
+
 .rounded-\[2rem\] {
   border-radius: 2rem;
+}
+
+.border-\[1px\] {
+  border-width: 1px;
+}
+
+.border-solid {
+  border-style: solid;
 }
 
 .bg-\[\#004aad\] {
@@ -671,8 +725,22 @@ video {
   padding: 1.25rem;
 }
 
+.px-\[2\.5rem\] {
+  padding-left: 2.5rem;
+  padding-right: 2.5rem;
+}
+
+.py-\[0\.25rem\] {
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
+}
+
 .text-center {
   text-align: center;
+}
+
+.text-\[12\.5px\] {
+  font-size: 12.5px;
 }
 
 .text-\[145px\] {
@@ -681,6 +749,15 @@ video {
 
 .text-\[25px\] {
   font-size: 25px;
+}
+
+.font-bold {
+  font-weight: 700;
+}
+
+.text-\[\#408AFF\] {
+  --tw-text-opacity: 1;
+  color: rgb(64 138 255 / var(--tw-text-opacity));
 }
 
 .text-white {
@@ -702,6 +779,12 @@ video {
   src: url(/fonts/Carlito-Regular.ttf);
 }
 
+@font-face {
+  font-family: Roboto;
+
+  src: url(/fonts/Roboto-Regular.ttf);
+}
+
 .paytone-one {
   font-family: PaytoneOne, sans-serif;
 }
@@ -716,4 +799,17 @@ video {
 
 .carlito .bold {
   font-weight: bold;
+}
+
+.roboto {
+  font-family: Roboto;
+}
+
+.roboto .bold {
+  font-weight: bold;
+}
+
+.hover\:drop-shadow-\[0_0_0\.25rem_rgba\(0\2c 0\2c 0\2c 0\.25\)\]:hover {
+  --tw-drop-shadow: drop-shadow(0 0 0.25rem rgba(0,0,0,0.25));
+  filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
 }

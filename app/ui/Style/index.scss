@@ -13,6 +13,11 @@
 	src: url(/fonts/Carlito-Regular.ttf);
 }
 
+@font-face {
+	font-family: Roboto;
+	src: url(/fonts/Roboto-Regular.ttf);
+}
+
 .paytone-one {
 	font-family: PaytoneOne, sans-serif;
 	.bold {
@@ -22,6 +27,13 @@
 
 .carlito {
 	font-family: Carlito;
+	.bold {
+		font-weight: bold;
+	}
+}
+
+.roboto {
+	font-family: Roboto;
 	.bold {
 		font-weight: bold;
 	}
