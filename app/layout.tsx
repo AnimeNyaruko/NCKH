@@ -8,7 +8,10 @@ import Link from 'next/link';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-	title: 'iLearn',
+	title: {
+		template: 'iLearn | %s',
+		default: ' iLearn',
+	},
 	description: 'Một website dùng để học tập. Cùng với đó là vô vàn tài liệu tham khảo.',
 };
 
@@ -19,6 +22,9 @@ export default function RootLayout({
 }>) {
 	return (
 		<html lang="en">
+			<head>
+				<link rel="shortcut icon" href="/images/logo_temp.svg" type="image/x-icon" />
+			</head>
 			<body className={inter.className}>
 				<div className="absolute w-screen h-[75px] bg-white z-[1]">
 					<div className="relative block w-full h-1/4 bg-[#004aad]"></div>
