@@ -39,13 +39,20 @@ export default function RootLayout({
 								style={{ objectFit: 'contain' }}
 							/>
 						</Link>
-						<div className="w-auto h-full ml-auto mr-[2.5rem] flex items-center">
+						<div className="w-auto h-full ml-auto mr-[2rem] flex items-center">
 							<LoginButton
 								className="relative block cursor-pointer mr-[1.75rem]"
-								url="/login"
-								placeholder="LOG IN"
+								url="/register"
+								placeholder="Đang ký"
+								fontClass="text-[12.5px] px-[2.5rem] py-[0.25rem]"
 							/>
-							<div className="relative flex items-center h-full w-fit">
+							<LoginButton
+								className="relative block cursor-pointer"
+								url="/login"
+								placeholder="Đăng nhập"
+								fontClass="text-[12.5px] px-[2.5rem] py-[0.25rem]"
+							/>
+							{/* <div className="relative flex items-center h-full w-fit">
 								<Image
 									src={UserIcon}
 									alt="User Icon"
@@ -53,7 +60,7 @@ export default function RootLayout({
 									className="relative h-[70%] w-auto cursor-pointer"
 									style={{ objectFit: 'contain' }}
 								/>
-							</div>
+							</div> */}
 						</div>
 					</div>
 				</div>

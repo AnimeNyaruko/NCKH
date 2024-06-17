@@ -34,3 +34,23 @@
 .roboto .bold {
   font-weight: bold;
 }
+
+.placeholder-bold::-webkit-input-placeholder {
+  font-weight: bold;
+}
+
+.placeholder-bold::-moz-placeholder {
+  font-weight: bold;
+}
+
+.placeholder-bold:-ms-input-placeholder {
+  font-weight: bold;
+}
+
+.placeholder-bold::-ms-input-placeholder {
+  font-weight: bold;
+}
+
+.placeholder-bold::placeholder {
+  font-weight: bold;
+}
