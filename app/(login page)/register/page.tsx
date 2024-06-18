@@ -20,7 +20,7 @@ export default function Page() {
 				<InputFields className="mb-[1.25rem]" placeholder="Mật khẩu" />
 				<LoginButton
 					placeholder="Đăng ký"
-					url="/"
+					url="/home"
 					className="rounded-[2rem] mb-[1.25rem]"
 					fontClass="text-[20px] py-[0.75rem] px-[3rem] rounded-[2rem]"
 				/>
