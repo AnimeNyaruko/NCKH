@@ -1,9 +1,6 @@
 import type { Metadata } from 'next';
-import Image from 'next/image';
-import Link from 'next/link';
 import { Inter } from 'next/font/google';
-import LoginButton from '@/app/ui/Buttons/Login';
-import '@/app/ui/final.css';
+import './ui/final.css';
 
 const inter = Inter({ subsets: ['latin'] });
 
