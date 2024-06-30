@@ -22,7 +22,7 @@ export default function Home() {
 						<LoginButton
 							className="relative block cursor-pointer mr-[1.75rem]"
 							url="/register"
-							placeholder="Đang ký"
+							placeholder="Đăng ký"
 							fontClass="text-[12.5px] px-[2.5rem] py-[0.25rem]"
 						/>
 						<LoginButton

@@ -1,0 +1,66 @@
+import { db } from '@vercel/postgres';
+import findBookLink from '../lib/utils';
+import { BookLink } from '../lib/definations';
+
+const client = await db.connect();
+
+async function seedLinkGrade() {
+	await client.sql`CREATE TABLE IF NOT EXISTS BookLinks (
+                                                            Grade smallint,
+                                                            Subject text,
+                                                            Author text,
+                                                            isAnswer BOOLEAN,
+                                                            isExercise BOOLEAN,
+                                                            url text
+                                                            )`;
+
+	const GradeList = [10, 11, 12];
+	const SubjectList = ['Math', 'Physic', 'Chemical'];
+	const AuthorList = ['CD', 'KNTT', 'CTST'];
+	type findLink = Omit<BookLink, 'url'> & {
+		isAnswer: boolean;
+		isExercise: boolean;
+	};
+
+	let LinkList: findLink[] = [];
+	for (let i: number = 0; i < 3; i++) {
+		for (let j: number = 0; j < 3; j++) {
+			for (let k: number = 0; k < 3; k++) {
+				for (let isAns: number = 0; isAns < 2; isAns++) {
+					for (let isExer: number = 0; isExer < 2; isExer++) {
+						const temp: findLink = {
+							Grade: GradeList[i],
+							Subject: SubjectList[j],
+							Author: AuthorList[k],
+							isAnswer: isAns ? true : false,
+							isExercise: isExer ? true : false,
+						};
+						LinkList.push(temp);
+					}
+				}
+			}
+		}
+	}
+
+	const linkCreated = await Promise.all(
+		LinkList.map(async (i) => {
+			const url = findBookLink(i);
+			return client.sql`INSERT INTO BookLinks
+                        VALUES (${i.Grade},${i.Subject},${i.Author},${i.isAnswer},${i.isExercise},${url})`;
+		})
+	);
+	return linkCreated;
+}
+
+export async function GET() {
+	try {
+		await client.sql`BEGIN`;
+		await seedLinkGrade();
+		await client.sql`COMMIT`;
+		return Response.json({ message: 'Book link created' });
+	} catch (e) {
+		console.log(e);
+		await client.sql`ROLLBACK`;
+		return Response.json({ e }, { status: 500 });
+	}
+}
