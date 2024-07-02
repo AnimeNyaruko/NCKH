@@ -1,10 +1,7 @@
 import { BookLink } from './definations';
 import { BookLinkData } from './data';
 
-type findLink = Omit<BookLink, 'url'> & {
-	isAnswer: boolean;
-	isExercise: boolean;
-};
+type findLink = Required<Omit<BookLink, 'url'>>;
 export default function findBookLink(bLinks: findLink) {
 	let grade: number;
 	let subject: number;

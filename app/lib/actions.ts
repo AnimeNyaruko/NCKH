@@ -1,8 +1,14 @@
-'use server'
+'use server';
 
-import { sql } from "@vercel/postgres";
-import { z } from "zod";
+import { sql } from '@vercel/postgres';
+import { BookLink } from './definations';
 
-export default async function fetchBookLinks({Grade,Subject}:{Grade:number,Subject:string}){
-    
+export default async function fetchBookLinks(data: BookLink) {
+	const { Grade, Subject, Author } = data;
+
+	const { rows } = await sql<BookLink>`SELECT * FROM booklinks WHERE 
+                        Grade = ${Grade} AND
+                        Subject = ${Subject} AND
+                        Author = ${Author}`;
+	return rows;
 }
