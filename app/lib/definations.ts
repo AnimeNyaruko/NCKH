@@ -6,3 +6,8 @@ export type BookLink = {
 	isExercise?: boolean;
 	url?: string;
 };
+
+export const ColorCode = {
+	baseColor: '#3A86FF',
+	baseColorHover: '#024bbf',
+};

@@ -2,6 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
+@import 'defination.module.scss';
 @font-face {
 	font-family: PaytoneOne;
 	src: url(/fonts/PaytoneOne-Regular.ttf);
@@ -43,15 +44,9 @@
 	font-weight: bold;
 }
 
-.top-full {
-	top: 100%;
+.bg-\[\#3a86ff\] {
+	background-color: $base-color;
 }
-.bottom-full {
-	bottom: 100%;
-}
-.left-full {
-	left: 100%;
-}
-.right-full {
-	right: 100%;
+.hover\:bg-\[\#024bbf\]:hover {
+	background-color: $base-color-hover;
 }

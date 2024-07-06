@@ -1,6 +1,11 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+:export {
+  colorCode: #3a86ff;
+  colorCodeHover: #024bbf;
+}
+
 @font-face {
   font-family: PaytoneOne;
   src: url(/fonts/PaytoneOne-Regular.ttf);
@@ -55,18 +60,10 @@
   font-weight: bold;
 }
 
-.top-full {
-  top: 100%;
+.bg-\[\#3a86ff\] {
+  background-color: #3a86ff;
 }
 
-.bottom-full {
-  bottom: 100%;
-}
-
-.left-full {
-  left: 100%;
-}
-
-.right-full {
-  right: 100%;
+.hover\:bg-\[\#024bbf\]:hover {
+  background-color: #024bbf;
 }
