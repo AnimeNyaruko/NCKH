@@ -657,6 +657,10 @@ video {
   display: grid;
 }
 
+.hidden {
+  display: none;
+}
+
 .h-1\/4 {
   height: 25%;
 }
@@ -749,6 +753,12 @@ video {
   cursor: pointer;
 }
 
+.select-none {
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+}
+
 .grid-cols-\[repeat\(23\2c 1fr\)\] {
   grid-template-columns: repeat(23,1fr);
 }
@@ -773,12 +783,21 @@ video {
   gap: 0.5rem;
 }
 
+.gap-y-2 {
+  row-gap: 0.5rem;
+}
+
 .rounded-2xl {
   border-radius: 1rem;
 }
 
 .rounded-\[2rem\] {
   border-radius: 2rem;
+}
+
+.rounded-b-2xl {
+  border-bottom-right-radius: 1rem;
+  border-bottom-left-radius: 1rem;
 }
 
 .border-\[1px\] {
@@ -963,4 +982,14 @@ video {
 .hover\:drop-shadow-\[0_0_0\.25rem_rgba\(0\2c 0\2c 0\2c 0\.25\)\]:hover {
   --tw-drop-shadow: drop-shadow(0 0 0.25rem rgba(0,0,0,0.25));
   filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
+}
+
+@media (min-width: 1024px) {
+  .lg\:text-\[30px\] {
+    font-size: 30px;
+  }
+}
+
+.\[\&\]\:block {
+  display: block;
 }
