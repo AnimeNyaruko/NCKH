@@ -3,37 +3,17 @@
 import Link from 'next/link';
 import Image, { StaticImageData } from 'next/image';
 import { BookLink } from '@/app/lib/definations';
-import { fetchAllAuthorLinks } from '@/app/lib/actions';
-import React, { useState, useRef, useCallback } from 'react';
+import React, { useState, useRef, Suspense } from 'react';
 import Book from '@/public/images/book.png';
 import Tool from '@/public/images/tools.png';
 import variables from '@/app/ui/Style/_defination.module.scss';
 import clsx from 'clsx';
+import LinkSelection from './LinkSelection';
 
 const bgCode = {
 	code: variables.colorCode,
 	codeOnHover: variables.colorCodeHover,
 };
-function BookTypeName(data: Omit<BookLink, 'Author'>) {
-	let { Grade, Subject } = data;
-	switch (Subject) {
-		case 'Math':
-			Subject = 'Toán';
-			break;
-		case 'Physic':
-			Subject = 'Lý';
-			break;
-		default:
-			Subject = 'Hóa';
-			break;
-	}
-	return [
-		`Sách giáo khoa ${Subject} ${Grade}`,
-		`Giải sách giáo khoa ${Subject} ${Grade}`,
-		`Sách bài tập ${Subject} ${Grade}`,
-		`Giải sách giáo khoa ${Subject} ${Grade}`,
-	];
-}
 
 function TopSelection({
 	text,
@@ -54,7 +34,17 @@ function TopSelection({
 	);
 }
 
+function Loading() {
+	return (
+		<p
+			className={`bg-[${bgCode.code}] block relative rounded-b-md p-2 w-fit h-fit roboto text-white`}>
+			Loading...
+		</p>
+	);
+}
+
 export default function Page() {
+	//** useRef declaration
 	const data = useRef<Omit<BookLink, 'Author'>>({ Grade: 10, Subject: 'Math' });
 	const LinkText = useRef(['']);
 	const LinksArray = useRef([['']]);
@@ -64,16 +54,14 @@ export default function Page() {
 		Utility: false,
 	});
 
+	const passingRef = useRef({
+		LinkText: LinkText,
+		LinksArray: LinksArray,
+	});
+
+	//* useState declaration
 	const [content, setContent] = useState(<></>);
 	const [dataIsFull, setDataStatus] = useState(false);
-
-	const fetchAuthor = useCallback(async () => {
-		console.log('called');
-		LinkText.current = BookTypeName(data.current);
-		LinksArray.current = await fetchAllAuthorLinks(data.current);
-		setDataStatus(true);
-		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, [dataIsFull]);
 
 	//** Selector is a CHILD COMPONENT for SubjectSelector, GradeSelector.
 	const Selector = ({
@@ -100,9 +88,9 @@ export default function Page() {
 	const SubjectSelection = () => {
 		return (
 			<div
-				onClick={async () => {
+				onClick={() => {
 					activateState.current.Study = false;
-					await fetchAuthor();
+					setDataStatus(true);
 				}}
 				className={clsx('hidden relative', { '[&]:block': activateState.current.Study })}>
 				<div
@@ -165,53 +153,6 @@ export default function Page() {
 		);
 	};
 
-	const LinkSelection = (isLoaded: boolean) => {
-		return (
-			<div
-				className={clsx('hidden relative left-1/2 -translate-x-1/2 w-3/4 h-auto', {
-					'[&]:block': dataIsFull,
-				})}>
-				<div
-					className={`pt-5 bg-[${bgCode.code}] grid grid-cols-[repeat(3,1fr)] grid-rows-[auto] w-full h-full rounded-b-2xl gap-y-2`}>
-					{['Cánh diều', 'Chân trời sáng tạo', 'Kết nối tri thức'].map((e, i) => {
-						i = i + 1;
-						return (
-							<div
-								key={e}
-								className={`border-solid border-white ${
-									i == 2 && 'border-x-[1px]'
-								} grid grid-cols-auto grid-rows-[max-content_repeat(2,max-content)_min-content_repeat(2,max-content)] justify-center`}>
-								<div
-									className={`col-start-${i} col-end-${
-										i + 1
-									} row-start-1 row-end-2 flex items-center justify-center`}>
-									<p className="text-[25px] text-white font-bold paytone-one">{e}</p>
-								</div>
-								<hr className={`w- h-min col-start-${i} col-end-${i + 1} row-start-4 row-end-5`} />
-								{LinksArray.current[i - 1].map((e, _index, arr) => {
-									const index = _index + 2 >= 4 ? _index + 1 : _index;
-									return (
-										<div
-											key={`Colum${i} - Row${index + 1}`}
-											className={`col-start-${i} col-end-${i + 1} ${
-												_index == 0 ? 'mt-3' : _index == arr.length - 1 ? 'mb-3' : 'my-3'
-											} row-start-${index + 2} row-end-${
-												index + 3
-											} flex items-center justify-center`}>
-											<Link href={`${e}`} className="text-[15px] text-white carlito">
-												{LinkText.current[_index]}
-											</Link>
-										</div>
-									);
-								})}
-							</div>
-						);
-					})}
-				</div>
-			</div>
-		);
-	};
-
 	return (
 		<main>
 			<div
@@ -247,7 +188,11 @@ export default function Page() {
 					{/* {activateState.current.Utility && content} */}
 				</div>
 			</div>
-			{!activateState.current.Study && dataIsFull && LinkSelection(dataIsFull)}
+			{!activateState.current.Study && dataIsFull && (
+				<Suspense fallback={<Loading />}>
+					<LinkSelection data={data.current} refProps={passingRef} />
+				</Suspense>
+			)}
 		</main>
 	);
 }
