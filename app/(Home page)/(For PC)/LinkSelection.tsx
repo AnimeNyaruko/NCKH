@@ -1,6 +1,7 @@
 import { fetchAllAuthorLinks } from '@/app/lib/actions';
 import clsx from 'clsx';
 import Link from 'next/link';
+import { forwardRef } from 'react';
 import variables from '@/app/ui/Style/_defination.module.scss';
 import { BookLink } from '@/app/lib/definations';
 
@@ -30,14 +31,16 @@ function BookTypeName(data: Omit<BookLink, 'Author'>) {
 	];
 }
 
-const LinkSelection = async ({
-	data,
-	refProps,
-}: {
-	data: Omit<BookLink, 'Author'>;
-	refProps: any;
-}) => {
+const LinkSelection = async (
+	props: { data: Omit<BookLink, 'Author'>; refProps: any },
+	ref: any
+) => {
+	const { data, refProps } = props;
+
+	//*Check if ref property is nullish
 	if (refProps == null) return null;
+
+	//*If not null, extract LinksArray and LinkText from ref
 	const { LinksArray, LinkText } = refProps.current;
 
 	LinksArray.current = await fetchAllAuthorLinks(data);
@@ -49,22 +52,27 @@ const LinkSelection = async ({
 		<div className={clsx('block relative left-1/2 -translate-x-1/2 w-3/4 h-auto')}>
 			<div
 				className={`pt-5 bg-[${bgCode.code}] grid grid-cols-[repeat(3,1fr)] grid-rows-[auto] w-full h-full rounded-b-2xl gap-y-2`}>
+				{/* Run through 3 authors */}
 				{['Cánh diều', 'Chân trời sáng tạo', 'Kết nối tri thức'].map((e, i) => {
 					i = i + 1;
 					return (
 						<div
 							key={e}
 							className={`border-solid border-white ${
+								// *If render content at the middle column, create a border both right and left.xx
 								i == 2 && 'border-x-[1px]'
 							} grid grid-cols-auto grid-rows-[max-content_repeat(2,max-content)_min-content_repeat(2,max-content)] justify-center`}>
 							<div
+								//* Running through every column and write the Author at the head
 								className={`col-start-${i} col-end-${
 									i + 1
 								} row-start-1 row-end-2 flex items-center justify-center`}>
 								<p className="text-[25px] text-white font-bold paytone-one">{e}</p>
 							</div>
 							<hr className={`w- h-min col-start-${i} col-end-${i + 1} row-start-4 row-end-5`} />
+							{/* //* Now running through every links of the i-th author. */}
 							{LinksArray.current[i - 1].map((e: any, _index: number, arr: string | any[]) => {
+								//*After render first 2 links, add 1 to the index to not render at the horizontal line.
 								const index = _index + 2 >= 4 ? _index + 1 : _index;
 								return (
 									<div
@@ -88,4 +96,4 @@ const LinkSelection = async ({
 	);
 };
 
-export default LinkSelection;
+export default forwardRef(LinkSelection);

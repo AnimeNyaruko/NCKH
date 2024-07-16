@@ -5,3 +5,16 @@ $base-color-hover: #024bbf;
 	colorCode: $base-color;
 	colorCodeHover: $base-color-hover;
 }
+
+.bg-\[\#3a86ff\] {
+	background-color: $base-color;
+}
+.hover\:bg-\[\#024bbf\]:hover {
+	background-color: $base-color-hover;
+}
+.text-\[\#3a86ff\] {
+	color: $base-color;
+}
+.hover\:text-\[\#024bbf\]:hover {
+	color: $base-color-hover;
+}

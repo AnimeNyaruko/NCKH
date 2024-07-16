@@ -6,6 +6,22 @@
   colorCodeHover: #024bbf;
 }
 
+.bg-\[\#3a86ff\] {
+  background-color: #3a86ff;
+}
+
+.hover\:bg-\[\#024bbf\]:hover {
+  background-color: #024bbf;
+}
+
+.text-\[\#3a86ff\] {
+  color: #3a86ff;
+}
+
+.hover\:text-\[\#024bbf\]:hover {
+  color: #024bbf;
+}
+
 @font-face {
   font-family: PaytoneOne;
   src: url(/fonts/PaytoneOne-Regular.ttf);
@@ -58,12 +74,4 @@
 
 .placeholder-bold::placeholder {
   font-weight: bold;
-}
-
-.bg-\[\#3a86ff\] {
-  background-color: #3a86ff;
-}
-
-.hover\:bg-\[\#024bbf\]:hover {
-  background-color: #024bbf;
 }

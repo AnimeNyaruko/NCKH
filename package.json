@@ -4,7 +4,7 @@
 	"private": true,
 	"scripts": {
 		"dev": "concurrently \"npm:next\" \"npm:tailwindcss\" ",
-		"tailwindcss": "tailwindcss -i ./app/ui/Style/index.css -o ./app/ui/final.css --watch",
+		"tailwindcss": "tailwindcss -i ./app/ui/Style/index.css -o ./app/ui/final.css --watch --minify",
 		"next": "next dev",
 		"build": "next build",
 		"start": "next start",
