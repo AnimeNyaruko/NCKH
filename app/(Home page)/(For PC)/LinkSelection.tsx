@@ -69,7 +69,7 @@ const LinkSelection = async (
 								} row-start-1 row-end-2 flex items-center justify-center`}>
 								<p className="text-[25px] text-white font-bold paytone-one">{e}</p>
 							</div>
-							<hr className={`w- h-min col-start-${i} col-end-${i + 1} row-start-4 row-end-5`} />
+							<hr className={`h-min col-start-${i} col-end-${i + 1} row-start-4 row-end-5`} />
 							{/* //* Now running through every links of the i-th author. */}
 							{LinksArray.current[i - 1].map((e: any, _index: number, arr: string | any[]) => {
 								//*After render first 2 links, add 1 to the index to not render at the horizontal line.

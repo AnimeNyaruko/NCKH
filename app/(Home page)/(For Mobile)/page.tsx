@@ -38,7 +38,7 @@ export default function Page() {
 						Học tập
 					</p>
 				</div>
-				{/* //! ADD HORIZONTAL LINE */}
+				<hr className="bg-white" />
 				<div className={`w-full h-fit bg-[${bgColor.normal}] hover:bg-[${bgColor.hover}]`}>
 					<p className="text-center text-white text-[30px] md:text-[37.5px] paytone-one ">
 						Tiện ích

@@ -39,7 +39,7 @@ function TopSelectionMobile() {}
 function Loading() {
 	return (
 		<p
-			className={`bg-[${bgCode.code}] block relative rounded-b-md p-2 w-fit h-fit roboto text-white`}>
+			className={`select-none bg-[${bgCode.code}] block relative rounded-b-md p-2 w-fit h-fit roboto text-white`}>
 			Loading...
 		</p>
 	);
