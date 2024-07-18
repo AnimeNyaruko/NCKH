@@ -2,14 +2,14 @@ import Logo from '@/app/icon.svg';
 import Image from 'next/image';
 import variable from '@/app/ui/Style/_defination.module.scss';
 
-import Search from '@/app/ui/Home page/searchbar';
+import Search from '@/app/ui/HomePage/searchbar';
 
 const bgColor = {
 	normal: variable.colorCode,
 	hover: variable.colorCodeHover,
 };
 
-export default function Page() {
+export default async function Page() {
 	return (
 		<div className="w-full h-[150vh]">
 			<div
