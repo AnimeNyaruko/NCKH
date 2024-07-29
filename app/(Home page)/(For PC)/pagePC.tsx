@@ -10,6 +10,8 @@ import variables from '@/app/ui/Style/_defination.module.scss';
 import clsx from 'clsx';
 import LinkSelection from './LinkSelection';
 
+import { PaytoneOne, Roboto } from '@/app/ui/Style/font';
+
 const bgCode = {
 	code: variables.colorCode,
 	codeOnHover: variables.colorCodeHover,
@@ -28,18 +30,18 @@ function TopSelectionPC({
 		<div
 			onClick={onClick}
 			className={`select-none hover:bg-[${bgCode.codeOnHover}] cursor-pointer h-full w-full relative flex items-center justify-center gap-2 `}>
-			<p className="text-[35px] text-white text-center paytone-one">{text}</p>
+			<p style={PaytoneOne.style} className="text-[35px] text-white text-center">
+				{text}
+			</p>
 			<Image className="relative block h-[35%] w-auto mt-2" src={imgSrc} alt="Book Icon" />
 		</div>
 	);
 }
 
-function TopSelectionMobile() {}
-
 function Loading() {
 	return (
 		<p
-			className={`select-none bg-[${bgCode.code}] block relative rounded-b-md p-2 w-fit h-fit roboto text-white`}>
+			className={`select-none bg-[${bgCode.code}] block relative rounded-b-md p-2 w-fit h-fit ${Roboto.className} text-white`}>
 			Loading...
 		</p>
 	);
@@ -66,7 +68,7 @@ export default function Page() {
 	const [content, setContent] = useState(<></>);
 	const [dataIsFull, setDataStatus] = useState(false);
 
-	//** Selector is a CHILD COMPONENT for SubjectSelector, GradeSelector.
+	//* Selector is a CHILD COMPONENT for SubjectSelector, GradeSelector.
 	const Selector = ({
 		text,
 		onClick,
@@ -83,7 +85,9 @@ export default function Page() {
 					`cursor-pointer flex items-center justify-center w-full hover:bg-[${bgCode.codeOnHover}] ` +
 					additionClass
 				}>
-				<p className="text-[15px] lg:text-[30px] text-white paytone-one ">{text}</p>
+				<p style={PaytoneOne.style} className="text-[15px] lg:text-[30px] text-white">
+					{text}
+				</p>
 			</div>
 		);
 	};
@@ -161,7 +165,9 @@ export default function Page() {
 			<div
 				className={`border-solid border-white border-b-[1px] w-screen bg-[${bgCode.code}] grid grid-cols-[repeat(21,1fr)] grid-rows-[10vh] items-items-center justify-center`}>
 				<div className="h-full col-start-1 col-end-4 ">
-					<div className="h-full w-full flex items-center justify-center text-white text-[35px] paytone-one">
+					<div
+						style={PaytoneOne.style}
+						className="h-full w-full flex items-center justify-center text-white text-[35px]">
 						<Link href="/home">iLearn</Link>
 					</div>
 				</div>

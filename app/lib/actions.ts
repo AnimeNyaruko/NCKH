@@ -14,15 +14,13 @@ export async function fetchBookLinks(data: BookLink) {
 
 export async function fetchAllAuthorLinks(data: Omit<BookLink, 'Author'>) {
 	const { Grade, Subject } = data;
-	const CD = (await fetchBookLinks({ ...data, Author: 'CD' })).map((e) => {
-		return e.url;
-	}) as Array<string>;
-	const KNTT = (await fetchBookLinks({ ...data, Author: 'KNTT' })).map((e) => {
-		return e.url;
-	}) as Array<string>;
-	const CTST = (await fetchBookLinks({ ...data, Author: 'CTST' })).map((e) => {
-		return e.url;
-	}) as Array<string>;
+	const CD = (await fetchBookLinks({ ...data, Author: 'CD' })).map((e) => e.url) as Array<string>;
+	const KNTT = (await fetchBookLinks({ ...data, Author: 'KNTT' })).map(
+		(e) => e.url
+	) as Array<string>;
+	const CTST = (await fetchBookLinks({ ...data, Author: 'CTST' })).map(
+		(e) => e.url
+	) as Array<string>;
 
 	const LinksArray = [[...CD], [...KNTT], [...CTST]];
 	return LinksArray;

@@ -1,7 +1,7 @@
 export type BookLink = {
-	Author: 'CD' | 'KNTT' | 'CTST' | string;
-	Subject: 'Math' | 'Physic' | 'Chemical' | string;
-	Grade: 10 | 11 | 12 | number;
+	Author: 'CD' | 'KNTT' | 'CTST';
+	Subject: 'Math' | 'Physic' | 'Chemical';
+	Grade: 10 | 11 | 12;
 	isAnswer?: boolean;
 	isExercise?: boolean;
 	url?: string;

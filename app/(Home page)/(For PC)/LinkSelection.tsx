@@ -5,6 +5,8 @@ import { forwardRef } from 'react';
 import variables from '@/app/ui/Style/_defination.module.scss';
 import { BookLink } from '@/app/lib/definations';
 
+import { PaytoneOne, Carlito } from '@/app/ui/Style/font';
+
 const bgCode = {
 	code: variables.colorCode,
 	codeOnHover: variables.colorCodeHover,
@@ -12,22 +14,23 @@ const bgCode = {
 
 function BookTypeName(data: Omit<BookLink, 'Author'>) {
 	let { Grade, Subject } = data;
+	let SubjectVN;
 	switch (Subject) {
 		case 'Math':
-			Subject = 'Toán';
+			SubjectVN = 'Toán';
 			break;
 		case 'Physic':
-			Subject = 'Lý';
+			SubjectVN = 'Lý';
 			break;
 		default:
-			Subject = 'Hóa';
+			SubjectVN = 'Hóa';
 			break;
 	}
 	return [
-		`Sách giáo khoa ${Subject} ${Grade}`,
-		`Giải sách giáo khoa ${Subject} ${Grade}`,
-		`Sách bài tập ${Subject} ${Grade}`,
-		`Giải sách giáo khoa ${Subject} ${Grade}`,
+		`Sách giáo khoa ${SubjectVN} ${Grade}`,
+		`Giải sách giáo khoa ${SubjectVN} ${Grade}`,
+		`Sách bài tập ${SubjectVN} ${Grade}`,
+		`Giải sách giáo khoa ${SubjectVN} ${Grade}`,
 	];
 }
 
@@ -45,21 +48,18 @@ const LinkSelection = async (
 
 	LinksArray.current = await fetchAllAuthorLinks(data);
 	LinkText.current = BookTypeName(data);
-	// await new Promise((resolve) => {
-	// 	setTimeout(resolve, 15000);
-	// });
 	return (
 		<div className={clsx('block relative left-1/2 -translate-x-1/2 w-3/4 h-auto')}>
 			<div
 				className={`pt-5 bg-[${bgCode.code}] grid grid-cols-[repeat(3,1fr)] grid-rows-[auto] w-full h-full rounded-b-2xl gap-y-2`}>
-				{/* Run through 3 authors */}
+				{/* //*Run through 3 authors */}
 				{['Cánh diều', 'Chân trời sáng tạo', 'Kết nối tri thức'].map((e, i) => {
 					i = i + 1;
 					return (
 						<div
 							key={e}
 							className={`border-solid border-white ${
-								// *If render content at the middle column, create a border both right and left.xx
+								// *If render content at the middle column, create a border both right and left.
 								i == 2 && 'border-x-[1px]'
 							} grid grid-cols-auto grid-rows-[max-content_repeat(2,max-content)_min-content_repeat(2,max-content)] justify-center`}>
 							<div
@@ -67,7 +67,9 @@ const LinkSelection = async (
 								className={`col-start-${i} col-end-${
 									i + 1
 								} row-start-1 row-end-2 flex items-center justify-center`}>
-								<p className="text-[25px] text-white font-bold paytone-one">{e}</p>
+								<p style={PaytoneOne.style} className="text-[25px] text-white font-bold">
+									{e}
+								</p>
 							</div>
 							<hr className={`h-min col-start-${i} col-end-${i + 1} row-start-4 row-end-5`} />
 							{/* //* Now running through every links of the i-th author. */}
@@ -82,7 +84,7 @@ const LinkSelection = async (
 										} row-start-${index + 2} row-end-${
 											index + 3
 										} flex items-center justify-center`}>
-										<Link href={`${e}`} className="text-[15px] text-white carlito">
+										<Link href={`${e}`} style={Carlito.style} className="text-[15px] text-white">
 											{LinkText.current[_index]}
 										</Link>
 									</div>
