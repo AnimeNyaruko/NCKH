@@ -2,13 +2,15 @@
 
 import variables from '@/app/ui/Style/_defination.module.scss';
 import { faCaretDown } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useState, useRef, Suspense } from 'react';
-import Image, { StaticImageData } from 'next/image';
+import Image from 'next/image';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faAngleDown } from '@fortawesome/free-solid-svg-icons';
 
 import { PaytoneOne, Roboto } from '@/app/ui/Style/font';
 import { BookLink } from '@/app/lib/definations';
 import { SubjectColor } from './bgGradientConfig';
+import LinkSelection from './LinkSelection';
 // import LinkSelection from './LinkSelection';
 
 import MathIcon from '@/public/images/MathIcon.png';
@@ -149,30 +151,37 @@ export default function Study() {
 
 	return !isFulFilled ? (
 		<div
-			className={`grid grid-cols-1 grid-rows-3 gap-y-3 py-3 justify-items-center items-center w-screen h-fit bg-[${bgColor.normal}]`}>
+			className={` grid grid-cols-1 grid-rows-3 gap-y-3 py-3 justify-items-center items-center w-screen h-fit bg-[${bgColor.normal}]`}>
 			{content}
 		</div>
 	) : (
 		<Suspense fallback={<p>loading...</p>}>
-			<div className="mx-auto w-[90%] grid grid-cols-1 grid-rows-5">
-				<div
-					id="title"
-					className={`h-[3em] rounded-full relative bg-left bg-gradient-to-r ${SubjectTitle.current.color}`}>
-					<div
-						className="relative top-1/2 -translate-y-1/2 h-3/4 mx-5 grid grid-cols-[auto_1fr] grid-rows-1 items-center gap-x-5 text-white"
-						style={PaytoneOne.style}>
-						<div className="h-full">
-							<Image
-								src={SubjectTitle.current.icon}
-								alt="Math Icon"
-								objectFit="fit"
-								className="w-auto h-full"
-							/>
-						</div>
-						<p className="justify-self-start h-min text-center text-lg">
-							{SubjectTitle.current.text}
-						</p>
+			<div className="mx-auto mt-2 w-[90%] bg-slate-200 rounded-[1.5rem] pb-5">
+				<div className="mx-auto w-[90%] grid grid-cols-1 grid-rows-6 gap-y-2">
+					<div className="self-center flex justify-between items-center">
+						<p className="ml-2 text-lg text-[#257fce] h-fit">Lớp {data.current.Grade}</p>
+						<FontAwesomeIcon className="opacity-35 text-lg mr-2" icon={faAngleDown} />
 					</div>
+					<div
+						id="title"
+						className={`h-[3em] rounded-full relative bg-left bg-gradient-to-r ${SubjectTitle.current.color}`}>
+						<div
+							className="relative top-1/2 -translate-y-1/2 h-3/4 mx-5 grid grid-cols-[auto_1fr] grid-rows-1 items-center gap-x-5 text-white"
+							style={PaytoneOne.style}>
+							<div className="h-[85%]">
+								<Image
+									src={SubjectTitle.current.icon}
+									alt="Math Icon"
+									objectFit="fit"
+									className="w-auto h-full"
+								/>
+							</div>
+							<p className="justify-self-start h-min text-center text-lg">
+								{SubjectTitle.current.text}
+							</p>
+						</div>
+					</div>
+					<LinkSelection data={data.current} />
 				</div>
 			</div>
 		</Suspense>
