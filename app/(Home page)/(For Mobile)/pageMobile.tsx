@@ -1,13 +1,13 @@
 'use client';
 
-import Logo from '@/app/icon.svg';
+import Logo from '@/public/images/icon.svg';
 import Image from 'next/image';
 import { useRef, useState } from 'react';
 import variable from '@/app/ui/Style/_defination.module.scss';
 import Search from '@/app/ui/Home Page/searchbar';
 
 import Study from './(Study Selection)/StudySelection';
-import Utility from './UtilitySelections';
+import Utility from './(Community Section)/UtilitySelections';
 
 import { PaytoneOne } from '@/app/ui/Style/font';
 
@@ -19,12 +19,6 @@ const bgColor = {
 export default function Page() {
 	const [selections, setSelectionsContent] = useState(<></>);
 	const [isDisplay, setDisplayStatus] = useState(false);
-
-	const currentDisplayNumber = useRef(0);
-	const displayArray = useRef(Array(2));
-
-	console.log(displayArray.current.length);
-
 	return (
 		<div className="w-full h-full">
 			<div
@@ -72,7 +66,7 @@ export default function Page() {
 					<p
 						style={PaytoneOne.style}
 						className="text-center text-white text-[30px] md:text-[37.5px] ">
-						Tiện ích
+						Diễn đàn
 					</p>
 				</div>
 			</div>

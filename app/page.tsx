@@ -2,8 +2,12 @@
 
 import { useState, useEffect } from 'react';
 
-import PC from './(Home page)/(For PC)/pagePC';
+// import PC from './(Home page)/(For PC)/pagePC';
 import Mobile from './(Home page)/(For Mobile)/pageMobile';
+
+function PC() {
+	return <p>hi</p>;
+}
 
 export default function Page() {
 	const [content, setContent] = useState(<></>);
