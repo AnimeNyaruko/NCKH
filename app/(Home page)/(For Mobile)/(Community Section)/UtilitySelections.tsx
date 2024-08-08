@@ -10,7 +10,7 @@ const bgColor = {
 };
 
 export default function Utility() {
-	const [timer, setTimer] = useState(5);
+	const [timer, setTimer] = useState(3);
 	const router = useRouter();
 
 	if (timer == 0) router.push('/community');
