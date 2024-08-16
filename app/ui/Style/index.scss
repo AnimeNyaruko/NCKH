@@ -43,3 +43,66 @@
 .placeholder-bold::placeholder {
 	font-weight: bold;
 }
+
+.botchat {
+	.user:first-child {
+		p {
+			margin-top: 0px;
+		}
+	}
+	// .user::after {
+	// 	content: '';
+	// 	clear: both;
+	// 	display: table;
+	// }
+	.user {
+		justify-self: flex-end;
+		display: flex;
+		> p {
+			word-break: break-all;
+			width: 100%;
+			text-overflow: clip;
+
+			background-color: rgb(103 232 249);
+
+			padding: 0.5rem;
+
+			margin-top: 1rem;
+			margin-left: 2.5rem;
+			margin-right: 0.5rem;
+
+			border: 1px solid transparent;
+			border-radius: 1rem;
+		}
+	}
+	.bot {
+		justify-self: flex-start;
+		display: flex;
+		> div {
+			background-color: rgb(203 213 225);
+
+			padding: 0.5rem;
+
+			margin-top: 1rem;
+			margin-left: 0.5rem;
+			margin-right: 2rem;
+
+			border: 1px solid transparent;
+			border-radius: 1rem;
+		}
+		.icon {
+			height: fit-content;
+			aspect-ratio: 1/1;
+
+			padding: 0.35rem;
+
+			border: 1px transparent;
+			border-radius: 100%;
+
+			background-color: rgb(203 213 225);
+
+			align-self: flex-end;
+			justify-self: end;
+		}
+	}
+}
