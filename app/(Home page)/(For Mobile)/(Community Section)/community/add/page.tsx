@@ -13,7 +13,7 @@ import React from 'react';
 export default function Page() {
 	const [Display, setDisplay] = useState<any>();
 	return (
-		<div className="mx-3 pt-2 h-screen flex flex-col">
+		<div className="mx-3 pt-2 h-dvh flex flex-col">
 			<form action="">
 				<div className="flex justify-between">
 					<FontAwesomeIcon className="" icon={faX} size="lg" fixedWidth />
