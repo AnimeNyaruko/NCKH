@@ -3,6 +3,8 @@
 import { sql } from '@vercel/postgres';
 import { BookLink } from './definations';
 
+import { createKysely } from '@vercel/postgres-kysely';
+
 export async function fetchBookLinks(data: BookLink) {
 	const { Grade, Subject, Author } = data;
 	const { rows } = await sql<BookLink>`SELECT * FROM booklinks WHERE 

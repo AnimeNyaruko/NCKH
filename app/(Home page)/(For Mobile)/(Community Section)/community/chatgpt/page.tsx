@@ -44,7 +44,7 @@ export default function Page() {
 				</div>
 				<hr className="border-black" />
 			</header>
-			<main className="h-[90svh] w-screen">
+			<main className="h-[90dvh] w-screen">
 				<div className="h-[90%] flex items-center">
 					<div
 						ref={ChatContainerElement}
