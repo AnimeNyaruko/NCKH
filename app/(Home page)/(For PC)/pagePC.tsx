@@ -1,6 +1,6 @@
 'use client';
 
-import { faBars, faPlus, faRobot, faX } from '@fortawesome/free-solid-svg-icons';
+import { faBars, faPlus, faRobot } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import clsx from 'clsx';
 
@@ -17,7 +17,7 @@ export default function Page() {
 						setDisplay(!isDisplay);
 					}}
 					className={clsx(
-						'rounded-t-[100%] z-0 bg-cyan-500 w-fit aspect-square flex items-center justify-center',
+						'cursor-pointer rounded-t-[100%] z-0 bg-cyan-500 w-fit aspect-square flex items-center justify-center',
 						{
 							'[transition:border-bottom-left-radius_linear_150ms,border-bottom-right-radius_linear_150ms] rounded-b-[20%] text-white':
 								isDisplay,
