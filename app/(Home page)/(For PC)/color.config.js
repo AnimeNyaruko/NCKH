@@ -6,12 +6,12 @@ export const Color = {
 	interact: {
 		code: '#004aad',
 		hover: {
-			background: 'bg-[#004aad] hover:bg-[#004aad]',
-			color: 'text-[#004aad] hover:text-[#004aad]',
+			background: 'hover:bg-[#004aad]',
+			color: 'hover:text-[#004aad]',
 		},
 		focus: {
-			background: 'bg-[#004aad] focus:bg-[#004aad]',
-			color: 'text-[#004aad] focus:text-[#004aad]',
+			background: 'focus:bg-[#004aad]',
+			color: 'focus:text-[#004aad]',
 		},
 	},
 };
