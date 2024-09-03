@@ -1,13 +1,14 @@
 'use client';
 
 import Image from 'next/image';
+import { Suspense } from 'react';
 
-import Community from '@/public/images/communicator.png';
-import Book from '@/public/images/book.png';
+import CommunityIMG from '@/public/images/communicator.png';
 import LOGO from '@/public/images/icon.svg';
 
 import Search from '@/app/ui/Home Page/searchbar';
 import Study from './(Study Section)/study';
+import Community from './(Community Section)/community';
 
 import { PaytoneOne } from '@/app/ui/Style/font';
 
@@ -22,6 +23,7 @@ export default function Page() {
 					iLearn
 				</p>
 				<Study />
+				<Community />
 			</div>
 		</div>
 	);

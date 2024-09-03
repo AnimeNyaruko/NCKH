@@ -10,11 +10,12 @@ export async function fetchBookLinks(data: BookLink) {
 	const { rows } = await sql<BookLink>`SELECT * FROM booklinks WHERE 
                         Grade = ${Grade} AND
                         Subject = ${Subject} AND
-                        Author = ${Author}`;
+                        Author = ${Author}
+						ORDER BY isexercise, isanswer`;
 	return rows;
 }
 
-export async function fetchAllAuthorLinks(data: Omit<BookLink, 'Author'>) {
+export async function fetchAllAuthorLinks(data: Omit<BookLink, 'url' | 'Author'>) {
 	const { Grade, Subject } = data;
 	const CD = (await fetchBookLinks({ ...data, Author: 'CD' })).map((e) => e.url) as Array<string>;
 	const KNTT = (await fetchBookLinks({ ...data, Author: 'KNTT' })).map(

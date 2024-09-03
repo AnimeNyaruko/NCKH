@@ -1,10 +1,19 @@
 /** @type {import('tailwindcss').Config} */
+
+import plugin from 'tailwindcss/plugin';
+
 export const content = [
 	'./pages/**/*.{js,ts,jsx,tsx}',
 	'./components/**/*.{js,ts,jsx,tsx}',
 	'./app/**/*.{js,ts,jsx,tsx}',
 ];
-export const plugins = [];
+export const plugins = [
+	plugin(function ({ matchVariant }) {
+		matchVariant('childClass', (value) => {
+			return `& ${value}`;
+		});
+	}),
+];
 export const theme = {
 	extend: {
 		keyframes: {

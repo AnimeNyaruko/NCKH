@@ -1,4 +1,5 @@
 export const Color = {
+	transition: 'transition-colors',
 	normal: {
 		code: '#3a86ff',
 		background: 'bg-[#3a86ff]',

@@ -1,8 +1,513 @@
 import { db } from '@vercel/postgres';
-import findBookLink from '../lib/utils';
 import { BookLink } from '../lib/definations';
 
 const client = await db.connect();
+
+function findBookLink(data: Required<Omit<BookLink, 'url'>>) {
+	let Grade = 0,
+		Subject = 0,
+		Author = 0,
+		isAns = 0,
+		isExer = 0;
+
+	switch (data!.Grade) {
+		case 11: {
+			Grade = 1;
+			break;
+		}
+		case 12: {
+			Grade = 2;
+			break;
+		}
+		default: {
+			Grade = 0;
+		}
+	}
+	switch (data!.Subject) {
+		case 'Math': {
+			Subject = 0;
+			break;
+		}
+		case 'Physic': {
+			Subject = 1;
+			break;
+		}
+		case 'Chemical': {
+			Subject = 2;
+			break;
+		}
+	}
+	switch (data!.Author) {
+		case 'CD': {
+			Author = 0;
+			break;
+		}
+		case 'KNTT': {
+			Author = 1;
+			break;
+		}
+		case 'CTST': {
+			Author = 2;
+			break;
+		}
+	}
+	isAns = data!.isAnswer ? 1 : 0;
+	isExer = data!.isExercise ? 1 : 0;
+
+	const url = [
+		//Grade10
+		[
+			//Math
+			[
+				//CD
+				[
+					//normal
+					[
+						'https://ilearn247.vercel.app/tonghop/10/math/cd?exercise=',
+						//Answer
+						'https://loigiaihay.com/sgk-toan-10-canh-dieu-c859.html',
+					],
+					//Exercise
+					[
+						'https://ilearn247.vercel.app/tonghop/10/math/cd?exercise=true',
+						//Answer
+						'https://loigiaihay.com/sbt-toan-10-canh-dieu-c1126.html',
+					],
+				],
+				//KNTT
+				[
+					//normal
+					[
+						'https://ilearn247.vercel.app/tonghop/10/math/kntt?exercise=',
+						//Answer
+						'https://loigiaihay.com/sgk-toan-10-ket-noi-tri-thuc-c811.html',
+					],
+					//Exercise
+					[
+						'https://ilearn247.vercel.app/tonghop/10/math/kntt?exercise=true',
+						//Answer
+						'https://loigiaihay.com/sbt-toan-10-ket-noi-tri-thuc-c1007.html',
+					],
+				],
+				//CTST
+				[
+					//normal
+					[
+						'https://ilearn247.vercel.app/tonghop/10/math/ctst?exercise=',
+						//Answer
+						'https://loigiaihay.com/sgk-toan-10-chan-troi-sang-tao-c868.html',
+					],
+					//Exercise
+					[
+						'https://ilearn247.vercel.app/tonghop/10/math/ctst?exercise=true',
+						//Answer
+						'https://loigiaihay.com/sbt-toan-10-chan-troi-sang-tao-c1090.html',
+					],
+				],
+			],
+			//Physic
+			[
+				//CD
+				[
+					//normal
+					[
+						'https://ilearn247.vercel.app/tonghop/10/physic/cd?exercise=',
+						//Answer
+						'https://loigiaihay.com/sgk-vat-li-10-canh-dieu-c806.html',
+					],
+					//Exercise
+					[
+						'https://ilearn247.vercel.app/tonghop/10/physic/cd?exercise=true',
+						//Answer
+						'https://loigiaihay.com/sbt-vat-li-10-canh-dieu-c1013.html',
+					],
+				],
+				//KNTT
+				[
+					//normal
+					[
+						'https://ilearn247.vercel.app/tonghop/10/physic/kntt?exercise=',
+						//Answer
+						'https://loigiaihay.com/sgk-vat-li-10-ket-noi-tri-thuc-c804.html',
+					],
+					//Exercise
+					[
+						'https://ilearn247.vercel.app/tonghop/10/physic/kntt?exercise=true',
+						//Answer
+						'https://loigiaihay.com/sbt-vat-li-10-ket-noi-tri-thuc-c1011.html',
+					],
+				],
+				//CTST
+				[
+					//normal
+					[
+						'https://ilearn247.vercel.app/tonghop/10/physic/ctst?exercise=',
+						//Answer
+						'https://loigiaihay.com/sgk-vat-li-10-chan-troi-sang-tao-c805.html',
+					],
+					//Exercise
+					[
+						'https://ilearn247.vercel.app/tonghop/10/physic/ctst?exercise=true',
+						//Answer
+						'https://loigiaihay.com/sbt-vat-li-10-chan-troi-sang-tao-c1012.html',
+					],
+				],
+			],
+			//Chemical
+			[
+				//CD
+				[
+					//normal
+					[
+						'https://ilearn247.vercel.app/tonghop/10/chemical/cd?exercise=',
+						//Answer
+						'https://loigiaihay.com/sgk-hoa-10-canh-dieu-c862.html',
+					],
+					//Exercise
+					[
+						'https://ilearn247.vercel.app/tonghop/10/chemical/cd?exercise=true',
+						//Answer
+						'https://loigiaihay.com/sbt-hoa-10-canh-dieu-c1159.html',
+					],
+				],
+				//KNTT
+				[
+					//normal
+					[
+						'https://ilearn247.vercel.app/tonghop/10/chemical/kntt?exercise=',
+						//Answer
+						'https://loigiaihay.com/sgk-hoa-10-chan-troi-sang-tao-c870.html',
+					],
+					//Exercise
+					[
+						'https://ilearn247.vercel.app/tonghop/10/chemical/kntt?exercise=true',
+						//Answer
+						'https://loigiaihay.com/sbt-hoa-10-ket-noi-tri-thuc-c1108.html',
+					],
+				],
+				//CTST
+				[
+					//normal
+					[
+						'https://ilearn247.vercel.app/tonghop/10/chemical/ctst?exercise=',
+						//Answer
+						'https://loigiaihay.com/sgk-hoa-10-ket-noi-tri-thuc-c828.html',
+					],
+					//Exercise
+					[
+						'https://ilearn247.vercel.app/tonghop/10/chemical/ctst?exercise=true',
+						//Answer
+						'https://loigiaihay.com/sbt-hoa-10-chan-troi-sang-tao-c1087.html',
+					],
+				],
+			],
+		],
+		//Grade11
+		[
+			//Math
+			[
+				//CD
+				[
+					//normal
+					[
+						'https://ilearn247.vercel.app/tonghop/11/math/cd?exercise=',
+
+						//Answer
+						'https://loigiaihay.com/sgk-toan-11-canh-dieu-c1371.html',
+					],
+					//Exercise
+					[
+						'https://ilearn247.vercel.app/tonghop/11/math/cd?exercise=true',
+						//Answer
+						'https://loigiaihay.com/sbt-toan-11-canh-dieu-c1568.html',
+					],
+				],
+				//KNTT
+				[
+					//normal
+					[
+						'https://ilearn247.vercel.app/tonghop/11/math/kntt?exercise=',
+
+						//Answer
+						'https://loigiaihay.com/sgk-toan-11-ket-noi-tri-thuc-c1370.html',
+					],
+					//Exercise
+					[
+						'https://ilearn247.vercel.app/tonghop/11/math/kntt?exercise=true',
+						//Answer
+						'https://loigiaihay.com/sbt-toan-11-ket-noi-tri-thuc-c1567.html',
+					],
+				],
+				//CTST
+				[
+					//normal
+					[
+						'https://ilearn247.vercel.app/tonghop/11/math/ctst?exercise=',
+
+						//Answer
+						'https://loigiaihay.com/sgk-toan-11-chan-troi-sang-tao-c1372.html',
+					],
+					//Exercise
+					[
+						'https://ilearn247.vercel.app/tonghop/11/math/ctst?exercise=true',
+						//Answer
+						'https://loigiaihay.com/sbt-toan-11-chan-troi-sang-tao-c1570.html',
+					],
+				],
+			],
+			//Physic
+			[
+				//CD
+				[
+					//normal
+					[
+						'https://ilearn247.vercel.app/tonghop/11/physic/cd?exercise=',
+						//Answer
+						'https://loigiaihay.com/sgk-vat-li-11-canh-dieu-c1369.html',
+					],
+					//Exercise
+					[
+						'https://ilearn247.vercel.app/tonghop/11/physic/cd?exercise=true',
+						//Answer
+						'https://loigiaihay.com/sbt-vat-li-11-canh-dieu-c1562.html',
+					],
+				],
+				//KNTT
+				[
+					//normal
+					[
+						'https://ilearn247.vercel.app/tonghop/11/physic/kntt?exercise=',
+
+						//Answer
+						'https://loigiaihay.com/sgk-vat-li-11-ket-noi-tri-thuc-c1366.html',
+					],
+					//Exercise
+					[
+						'https://ilearn247.vercel.app/tonghop/11/physic/kntt?exercise=true',
+						//Answer
+						'https://loigiaihay.com/sbt-vat-li-11-ket-noi-tri-thuc-c1557.html',
+					],
+				],
+				//CTST
+				[
+					//normal
+					[
+						'https://ilearn247.vercel.app/tonghop/11/physic/ctst?exercise=',
+
+						//Answer
+						'https://loigiaihay.com/sgk-vat-li-11-chan-troi-sang-tao-c1368.html',
+					],
+					//Exercise
+					[
+						'https://ilearn247.vercel.app/tonghop/11/physic/ctst?exercise=true',
+						//Answer
+						'https://loigiaihay.com/sbt-vat-li-11-chan-troi-sang-tao-c1558.html',
+					],
+				],
+			],
+			//Chemical
+			[
+				//CD
+				[
+					//normal
+					[
+						'https://ilearn247.vercel.app/tonghop/11/chemical/cd?exercise=',
+
+						//Answer
+						'https://loigiaihay.com/sgk-hoa-hoc-11-canh-dieu-c1433.html',
+					],
+					//Exercise
+					[
+						'https://ilearn247.vercel.app/tonghop/11/chemical/cd?exercise=true',
+						//Answer
+						'https://loigiaihay.com/sbt-hoa-11-canh-dieu-c1585.html',
+					],
+				],
+				//KNTT
+				[
+					//normal
+					[
+						'https://ilearn247.vercel.app/tonghop/11/chemical/kntt?exercise=',
+
+						//Answer
+						'https://loigiaihay.com/sgk-hoa-hoc-11-ket-noi-tri-thuc-c1431.html',
+					],
+					//Exercise
+					[
+						'https://ilearn247.vercel.app/tonghop/11/chemical/kntt?exercise=true',
+						//Answer
+						'https://loigiaihay.com/sbt-hoa-11-ket-noi-tri-thuc-c1584.html',
+					],
+				],
+				//CTST
+				[
+					//normal
+					[
+						'https://ilearn247.vercel.app/tonghop/11/chemical/ctst?exercise=',
+
+						//Answer
+						'https://loigiaihay.com/sgk-hoa-hoc-11-chan-troi-sang-tao-c1432.html',
+					],
+					//Exercise
+					[
+						'https://ilearn247.vercel.app/tonghop/11/chemical/ctst?exercise=true',
+						//Answer
+						'https://loigiaihay.com/sbt-hoa-11-chan-troi-sang-tao-c1586.html',
+					],
+				],
+			],
+		],
+		//Grade12
+		[
+			//Math
+			[
+				//CD
+				[
+					//normal
+					[
+						'#',
+						//Answer
+						'#',
+					],
+					//Exercise
+					[
+						'#',
+						//Answer
+						'#',
+					],
+				],
+				//KNTT
+				[
+					//normal
+					[
+						'#',
+						//Answer
+						'#',
+					],
+					//Exercise
+					[
+						'#',
+						//Answer
+						'#',
+					],
+				],
+				//CTST
+				[
+					//normal
+					[
+						'#',
+						//Answer
+						'#',
+					],
+					//Exercise
+					[
+						'#',
+						//Answer
+						'#',
+					],
+				],
+			],
+			//Physic
+			[
+				//CD
+				[
+					//normal
+					[
+						'#',
+						//Answer
+						'#',
+					],
+					//Exercise
+					[
+						'#',
+						//Answer
+						'#',
+					],
+				],
+				//KNTT
+				[
+					//normal
+					[
+						'#',
+						//Answer
+						'#',
+					],
+					//Exercise
+					[
+						'#',
+						//Answer
+						'#',
+					],
+				],
+				//CTST
+				[
+					//normal
+					[
+						'#',
+						//Answer
+						'#',
+					],
+					//Exercise
+					[
+						'#',
+						//Answer
+						'#',
+					],
+				],
+			],
+			//Chemical
+			[
+				//CD
+				[
+					//normal
+					[
+						'#',
+						//Answer
+						'#',
+					],
+					//Exercise
+					[
+						'#',
+						//Answer
+						'#',
+					],
+				],
+				//KNTT
+				[
+					//normal
+					[
+						'#',
+						//Answer
+						'#',
+					],
+					//Exercise
+					[
+						'#',
+						//Answer
+						'#',
+					],
+				],
+				//CTST
+				[
+					//normal
+					[
+						'#',
+						//Answer
+						'#',
+					],
+					//Exercise
+					[
+						'#',
+						//Answer
+						'#',
+					],
+				],
+			],
+		],
+	];
+
+	return url[Grade][Subject][Author][isExer]![isAns];
+}
 
 async function seedLinkGrade() {
 	await client.sql`CREATE TABLE IF NOT EXISTS BookLinks (
@@ -14,9 +519,6 @@ async function seedLinkGrade() {
                                                             url text
                                                             )`;
 
-	const GradeList = [10, 11, 12];
-	const SubjectList = ['Math', 'Physic', 'Chemical'];
-	const AuthorList = ['CD', 'KNTT', 'CTST'];
 	type findLink = Omit<BookLink, 'url'> & {
 		isAnswer: boolean;
 		isExercise: boolean;
@@ -29,9 +531,9 @@ async function seedLinkGrade() {
 				for (let isAns: number = 0; isAns < 2; isAns++) {
 					for (let isExer: number = 0; isExer < 2; isExer++) {
 						const temp: findLink = {
-							Grade: GradeList[i],
-							Subject: SubjectList[j],
-							Author: AuthorList[k],
+							Grade: i == 0 ? 10 : i == 1 ? 11 : 12,
+							Subject: j == 0 ? 'Math' : j == 1 ? 'Physic' : 'Chemical',
+							Author: k == 0 ? 'CD' : k == 1 ? 'KNTT' : 'CTST',
 							isAnswer: isAns ? true : false,
 							isExercise: isExer ? true : false,
 						};
@@ -45,7 +547,7 @@ async function seedLinkGrade() {
 	const linkCreated = await Promise.all(
 		LinkList.map(async (i) => {
 			const url = findBookLink(i);
-			return client.sql`INSERT INTO BookLinks
+			return await client.sql`INSERT INTO BookLinks
                         VALUES (${i.Grade},${i.Subject},${i.Author},${i.isAnswer},${i.isExercise},${url})`;
 		})
 	);

@@ -1,10 +1,21 @@
 import { Maven_Pro } from 'next/font/google';
 import localFont from 'next/font/local';
 
-export const Carlito = localFont({
+//*Carlito
+const CarlitoNormal = localFont({
 	src: './fonts/Carlito-Regular.ttf',
 	display: 'swap',
 });
+const CarlitoBold = localFont({
+	src: './fonts/Carlito-Bold.ttf',
+	display: 'swap',
+});
+export const Carlito = {
+	normal: CarlitoNormal,
+	bold: CarlitoBold,
+};
+
+//*PaytoneOne
 export const PaytoneOne = localFont({
 	src: './fonts/PaytoneOne-Regular.ttf',
 	display: 'swap',
