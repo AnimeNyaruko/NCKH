@@ -169,7 +169,13 @@ function SelectionComponent(props: {
 }
 
 function Fallback() {
-	return <div className="absolute">Vui lòng đợi chúng tớ lấy đường dẫn cho bạn nhé~</div>;
+	return (
+		<div
+			className={`flex gap-x-2 absolute w-fit h-fit text-white p-2 ${Color.normal.background} rounded-b-xl`}>
+			<p>Đợi chúng tớ chút xíu nhé</p>
+			<div className="[&]:w-[25px] [&]:p-[5px] fallback"></div>
+		</div>
+	);
 }
 
 async function Result(props: { data: Omit<BookLink, 'url' | 'Author'> }) {
