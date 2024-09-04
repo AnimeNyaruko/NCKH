@@ -7,7 +7,7 @@ import variable from '@/app/ui/Style/_defination.module.scss';
 import Search from '@/app/ui/Home Page/searchbar';
 
 import Study from './(Study Selection)/StudySelection';
-import Utility from './(Community Section)/UtilitySelections';
+import Utility from './UtilitySelections';
 
 import { PaytoneOne } from '@/app/ui/Style/font';
 

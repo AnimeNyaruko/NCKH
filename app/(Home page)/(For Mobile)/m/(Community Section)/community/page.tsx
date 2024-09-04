@@ -5,6 +5,8 @@ import MusicIcon from '@/public/images/Music.png';
 import PlusIcon from '@/public/images/plus.png';
 import Search from '@/app/ui/Home Page/searchbar';
 
+import UserAgent from 'user-agents';
+
 import { useEffect, useState } from 'react';
 import Image, { StaticImageData } from 'next/image';
 import { usePathname } from 'next/navigation';
@@ -53,30 +55,24 @@ export default function Page() {
 	const [RightPost, setRPost] = useState<Array<any>>([]);
 	const [LeftPost, setLPost] = useState<Array<any>>([]);
 
+	const ua = new UserAgent();
+
 	useEffect(() => {
-		if (init) {
-			fetch('api/community', { cache: 'no-cache' })
-				.then((res) => res.json())
-				.then((data: Array<{ title: string; src: string }>) => {
-					data.forEach((e, i: number) => {
-						const temp = new Blob([
-							Buffer.from('blob:nodedata:2fcba636-15b8-4ee6-9ce1-1d0bfe605f1d'),
-						]);
-						console.log(temp);
-						// console.log(e.src);
-						// const reader = new FileReader();
-						// reader.readAsDataURL(e.src);
-						// reader.onloadend = () => {
-						if (i % 2 == 0) {
-							setLPost([...LeftPost, e]);
-						} else {
-							setRPost([...RightPost, e]);
-						}
-						// };
+		if (ua.data.deviceCategory !== 'desktop')
+			if (init) {
+				fetch('api/community', { cache: 'no-cache' })
+					.then((res) => res.json())
+					.then((data: Array<{ title: string; src: string }>) => {
+						data.forEach((e, i: number) => {
+							if (i % 2 == 0) {
+								setLPost([...LeftPost, e]);
+							} else {
+								setRPost([...RightPost, e]);
+							}
+						});
+						setInit(false);
 					});
-					setInit(false);
-				});
-		}
+			}
 		// setInterval(() => {}, 10000);
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
