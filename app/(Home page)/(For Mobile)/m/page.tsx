@@ -1,6 +1,6 @@
 'use client';
 
-import Logo from '@/public/images/icon.svg';
+import Logo from '@/app/icon3.png';
 import Image from 'next/image';
 import { useRef, useState } from 'react';
 import variable from '@/app/ui/Style/_defination.module.scss';

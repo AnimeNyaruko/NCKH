@@ -9,8 +9,8 @@ export default async function LinkSelection(props: { data: BookLink }, ...prop: 
 	return (
 		<>
 			<SelectComponent url={links[0]} text={`Sách giáo khoa - ${Author}`} />
-			<SelectComponent url={links[1]} text={`Sách bài tập - ${Author}`} />
-			<SelectComponent url={links[2]} text={`Giải sách giáo khoa - ${Author}`} />
+			<SelectComponent url={links[1]} text={`Giải sách giáo khoa - ${Author}`} />
+			<SelectComponent url={links[2]} text={`Sách bài tập - ${Author}`} />
 			<SelectComponent url={links[3]} text={`Giải sách bài tập - ${Author}`} />
 		</>
 	);

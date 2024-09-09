@@ -4,6 +4,7 @@ import Image from 'next/image';
 import { Suspense } from 'react';
 
 import LOGO from '@/public/images/icon.svg';
+import bg from '@/public/images/background.png';
 
 import Search from '@/app/ui/Home Page/searchbar';
 import Study from './(Study Section)/study';
@@ -15,12 +16,19 @@ import { Color } from './color.config';
 
 export default function Page({ children }: { children: React.ReactNode }) {
 	return (
-		<div className="w-screen h-screen flex flex-col">
-			<div
-				className={`h-[10vh] w-screen ${Color.normal.background} flex justify-between items-center px-5`}>
-				<p style={PaytoneOne.style} className="text-5xl text-white">
-					iLearn
-				</p>
+		<div className="overflow-hidden relative w-screen h-screen flex flex-col">
+			<Image
+				src={bg}
+				alt="Main page background"
+				className="absolute -z-[1] w-[105%] h-[105%] object-fill"
+			/>
+			<div className={`relative h-[10vh] w-screen flex justify-between items-center px-5 `}>
+				<div className="w-fit h-full flex items-center justify-center px-5 border-b-2 border-solid border-white/25">
+					<p style={PaytoneOne.style} className="text-5xl text-white">
+						iLearn
+					</p>
+				</div>
+
 				<Study />
 				<Community />
 			</div>

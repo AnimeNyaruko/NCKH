@@ -1,18 +1,14 @@
 export const Color = {
 	transition: 'transition-colors',
 	normal: {
-		code: '#3a86ff',
-		background: 'bg-[#3a86ff]',
+		code: 'black',
+		background: 'bg-black',
 	},
 	interact: {
-		code: '#004aad',
+		code: '#181818',
 		hover: {
-			background: 'hover:bg-[#004aad]',
-			color: 'hover:text-[#004aad]',
-		},
-		focus: {
-			background: 'focus:bg-[#004aad]',
-			color: 'focus:text-[#004aad]',
+			background: 'hover:bg-[#181818]',
+			color: 'hover:text-white',
 		},
 	},
 };

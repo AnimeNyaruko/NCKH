@@ -5,8 +5,6 @@ import MusicIcon from '@/public/images/Music.png';
 import PlusIcon from '@/public/images/plus.png';
 import Search from '@/app/ui/Home Page/searchbar';
 
-import UserAgent from 'user-agents';
-
 import { useEffect, useState } from 'react';
 import Image, { StaticImageData } from 'next/image';
 import { usePathname } from 'next/navigation';

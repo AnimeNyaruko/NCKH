@@ -15,12 +15,14 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import { Color } from '../color.config';
 import { faCaretLeft } from '@fortawesome/free-solid-svg-icons';
+import { faCircle } from '@fortawesome/free-regular-svg-icons';
 import Book from '@/public/images/book.png';
 import { BookLink } from '@/app/lib/definations';
 import { fetchAllAuthorLinks } from '@/app/lib/actions';
 import Link from 'next/link';
 
 import { Carlito } from '@/app/ui/Style/font';
+import clsx from 'clsx';
 
 function SelectionComponent(props: {
 	pending: Dispatch<SetStateAction<boolean>>;
@@ -28,141 +30,159 @@ function SelectionComponent(props: {
 }) {
 	const { pending, data } = props;
 	return (
-		<ul className="bg-inherit group-hover/drop:flex hidden absolute top-full w-full flex-col gap-y-5 py-3">
+		<ul className="study-container group-hover/drop:flex hidden flex-col items-center gap-y-5 pt-2 pb-5 group-hover/drop:border-2 group-hover/drop:border-t-0 border-solid border-white/25 rounded-b-[20px] absolute w-full top-full text-white text-2xl font-bold bg-white/25">
 			<li
 				onMouseEnter={() => {
 					data.current.Grade = 10;
 				}}
-				id="Lớp 10"
-				className="bg-inherit group/drop1 p-3 flex items-center relative">
-				<p className="transition-all group-hover/drop1:text-white font-bold text-xl w-full px-5">
-					Lớp 10
-				</p>
-				<FontAwesomeIcon
-					className="transition-all group-hover/drop1:text-white group-hover/drop1:rotate-180 left-full"
-					icon={faCaretLeft}
-				/>
-				<div className="bg-inherit absolute left-full h-full">
-					<ul className="bg-inherit group-hover/drop1:flex hidden flex-col h-fit gap-y-8 py-3 px-5 pb-6">
+				className="group/drop1 w-full h-fit flex justify-center">
+				<div className="relative flex justify-center items-center w-3/4 py-2 rounded-full border-0 bg-[#555]">
+					<p className="w-fit text-center">Lớp 10</p>
+					<FontAwesomeIcon
+						className="absolute right-0 transition-all text-black group-hover/drop1:rotate-180 group-hover/drop1:text-white"
+						icon={faCaretLeft}
+						fixedWidth
+					/>
+				</div>
+				<ul className="group-hover/drop1:block w-fit bg-white/25 rounded-[20px] border-2 border-solid border-white/25 px-12 py-3 hidden ml-3 absolute left-full backdrop-blur-sm">
+					<div className="subject-container">
 						<li
 							onClick={() => {
 								data.current.Subject = 'Math';
 								pending(true);
 							}}
-							id="Môn toán"
-							className="transition-colors hover:text-white px-3 block relative text-xl font-bold">
-							Toán
+							className="cursor-pointer w-full h-fit rounded-full bg-[#555]">
+							<div className="relative w-full h-auto pl-5 pr-12 py-2 flex justify-center items-center circle-container">
+								<p>Toán</p>
+								<div className="circle" />
+							</div>
 						</li>
 						<li
 							onClick={() => {
 								data.current.Subject = 'Physic';
 								pending(true);
 							}}
-							id="Môn Lý"
-							className="transition-colors hover:text-white p-3 block relative text-xl font-bold">
-							Lý
+							className="cursor-pointer w-full h-fit rounded-full bg-[#555]">
+							<div className="relative w-full h-auto pl-5 pr-12 py-2 flex justify-center items-center circle-container">
+								<p>Lý</p>
+								<div className="circle" />
+							</div>
 						</li>
 						<li
 							onClick={() => {
 								data.current.Subject = 'Chemical';
 								pending(true);
 							}}
-							id="Môn hóa"
-							className="transition-colors hover:text-white px-3 block relative text-xl font-bold">
-							Hóa
+							className="cursor-pointer w-full h-fit rounded-full bg-[#555]">
+							<div className="relative w-full h-auto pl-5 pr-12 py-2 flex justify-center items-center circle-container">
+								<p>Hóa</p>
+								<div className="circle" />
+							</div>
 						</li>
-					</ul>
-				</div>
+					</div>
+				</ul>
 			</li>
 			<li
 				onMouseEnter={() => {
 					data.current.Grade = 11;
 				}}
-				id="Lớp 11"
-				className="bg-inherit group/drop1 p-3 flex items-center relative">
-				<p className="transition-colors group-hover/drop1:text-white font-bold text-xl w-full px-5">
-					Lớp 11
-				</p>
-				<FontAwesomeIcon
-					className="transition-all group-hover/drop1:text-white group-hover/drop1:rotate-180 left-full"
-					icon={faCaretLeft}
-				/>
-				<div className="bg-inherit absolute left-full h-full">
-					<ul className="bg-inherit group-hover/drop1:flex hidden flex-col h-fit gap-y-8 py-3 px-5">
+				className="group/drop1 w-full h-fit flex justify-center">
+				<div className="relative flex justify-center items-center w-3/4 py-2 rounded-full border-0 bg-[#555]">
+					<p className="w-fit text-center">Lớp 11</p>
+					<FontAwesomeIcon
+						className="absolute right-0 transition-all text-black group-hover/drop1:rotate-180 group-hover/drop1:text-white"
+						icon={faCaretLeft}
+						fixedWidth
+					/>
+				</div>
+				<ul className="group-hover/drop1:block w-fit bg-white/25 rounded-[20px] border-2 border-solid border-white/25 px-12 py-3 hidden ml-3 absolute left-full backdrop-blur-sm">
+					<div className="subject-container">
 						<li
 							onClick={() => {
 								data.current.Subject = 'Math';
 								pending(true);
 							}}
-							id="Môn toán"
-							className="transition-colors hover:text-white px-3 block relative text-xl font-bold">
-							Toán
+							className="cursor-pointer w-full h-fit rounded-full bg-[#555]">
+							<div className="relative w-full h-auto pl-5 pr-12 py-2 flex justify-center items-center circle-container">
+								<p>Toán</p>
+								<div className="circle" />
+							</div>
 						</li>
 						<li
 							onClick={() => {
 								data.current.Subject = 'Physic';
 								pending(true);
 							}}
-							id="Môn Lý"
-							className="transition-colors hover:text-white p-3 block relative text-xl font-bold">
-							Lý
+							className="cursor-pointer w-full h-fit rounded-full bg-[#555]">
+							<div className="relative w-full h-auto pl-5 pr-12 py-2 flex justify-center items-center circle-container">
+								<p>Lý</p>
+								<div className="circle" />
+							</div>
 						</li>
 						<li
 							onClick={() => {
 								data.current.Subject = 'Chemical';
 								pending(true);
 							}}
-							id="Môn hóa"
-							className="transition-colors hover:text-white px-3 block relative text-xl font-bold">
-							Hóa
+							className="cursor-pointer w-full h-fit rounded-full bg-[#555]">
+							<div className="relative w-full h-auto pl-5 pr-12 py-2 flex justify-center items-center circle-container">
+								<p>Hóa</p>
+								<div className="circle" />
+							</div>
 						</li>
-					</ul>
-				</div>
+					</div>
+				</ul>
 			</li>
 			<li
 				onMouseEnter={() => {
 					data.current.Grade = 12;
 				}}
-				id="Lớp 12"
-				className="bg-inherit group/drop1 p-3 flex items-center relative">
-				<p className="transition-colors group-hover/drop1:text-white font-bold text-xl w-full px-5">
-					Lớp 12
-				</p>
-				<FontAwesomeIcon
-					className="transition-all group-hover/drop1:text-white group-hover/drop1:rotate-180 left-full"
-					icon={faCaretLeft}
-				/>
-				<div className="bg-inherit absolute left-full h-full">
-					<ul className="bg-inherit group-hover/drop1:flex hidden flex-col h-fit gap-y-8 py-3 px-5">
+				className="group/drop1 w-full h-fit flex justify-center">
+				<div className="relative flex justify-center items-center w-3/4 py-2 rounded-full border-0 bg-[#555]">
+					<p className="w-fit text-center">Lớp 12</p>
+					<FontAwesomeIcon
+						className="absolute right-0 transition-all text-black group-hover/drop1:rotate-180 group-hover/drop1:text-white"
+						icon={faCaretLeft}
+						fixedWidth
+					/>
+				</div>
+				<ul className="group-hover/drop1:block w-fit bg-white/25 rounded-[20px] border-2 border-solid border-white/25 px-12 py-3 hidden ml-3 absolute left-full backdrop-blur-sm">
+					<div className="subject-container">
 						<li
 							onClick={() => {
 								data.current.Subject = 'Math';
 								pending(true);
 							}}
-							id="Môn toán"
-							className="transition-colors hover:text-white px-3 block relative text-xl font-bold">
-							Toán
+							className="cursor-pointer w-full h-fit rounded-full bg-[#555]">
+							<div className="relative w-full h-auto pl-5 pr-12 py-2 flex justify-center items-center circle-container">
+								<p>Toán</p>
+								<div className="circle" />
+							</div>
 						</li>
 						<li
 							onClick={() => {
 								data.current.Subject = 'Physic';
 								pending(true);
 							}}
-							id="Môn Lý"
-							className="transition-colors hover:text-white p-3 block relative text-xl font-bold">
-							Lý
+							className="cursor-pointer w-full h-fit rounded-full bg-[#555]">
+							<div className="relative w-full h-auto pl-5 pr-12 py-2 flex justify-center items-center circle-container">
+								<p>Lý</p>
+								<div className="circle" />
+							</div>
 						</li>
 						<li
 							onClick={() => {
 								data.current.Subject = 'Chemical';
 								pending(true);
 							}}
-							id="Môn hóa"
-							className="transition-colors hover:text-white px-3 block relative text-xl font-bold">
-							Hóa
+							className="cursor-pointer w-full h-fit rounded-full bg-[#555]">
+							<div className="relative w-full h-auto pl-5 pr-12 py-2 flex justify-center items-center circle-container">
+								<p>Hóa</p>
+								<div className="circle" />
+							</div>
 						</li>
-					</ul>
-				</div>
+					</div>
+				</ul>
 			</li>
 		</ul>
 	);
@@ -212,7 +232,19 @@ async function Result(props: { data: Omit<BookLink, 'url' | 'Author'> }) {
 						childClass-[.author]:text-2xl 
 						childClass-[.author]:pb-5 
 						childClass-[.author]:text-white 
-						rounded-lg rounded-t-none ${Color.normal.background} absolute w-fit h-fit select-none flex justify-items-center py-5`}>
+						rounded-lg bg-white/25 absolute w-fit h-fit select-none flex justify-items-center mt-5 py-5 backdrop-blur-sm border-x-2 border-b-2 border-solid border-white/50
+						after:content-['']
+						after:absolute
+						after:w-fit
+						after:h-fit
+						after:bottom-full
+						after:left-[20px]
+						after:border-solid
+						after:border-x-[8px]
+						after:border-x-transparent
+						after:border-b-[10px]
+						after:border-b-white/25
+						`}>
 			<div className="links_container">
 				<p className="author">Cánh diều</p>
 				<div className="childClass-[a]:transition-colors childClass-[a]:text-black hover:childClass-[a]:text-white flex flex-col gap-y-3 items-center">
@@ -262,16 +294,20 @@ export default function Study() {
 	const [isPending, setPendingState] = useState(false);
 
 	return (
-		<div className={`w-full h-full`}>
+		<div
+			className={clsx('z-10 w-full h-full border-solid border-white/25', {
+				'relative border-b-2 hover:border-0 group/drop hover:bg-white/25': !isPending,
+				'border-0 bg-white/25': isPending,
+			})}>
 			<button
 				onClick={() => {
 					if (isPending) setPendingState(false);
 				}}
-				className={`${Color.transition} ${Color.interact.hover.background} group/drop relative w-full h-full flex justify-center items-center gap-x-2 cursor-pointer`}>
+				className={`group-hover/drop:border-x-2 border-white/25 border-solid cursor-pointer relative w-full h-full flex justify-center items-center gap-x-2`}>
 				<p className="w-fit h-fit text-white text-2xl font-bold">Học tập</p>
 				<Image alt="Study Image" src={Book} className="w-auto h-1/2 object-contain" />
-				{!isPending && <SelectionComponent pending={setPendingState} data={data} />}
 			</button>
+			{!isPending && <SelectionComponent pending={setPendingState} data={data} />}
 			{isPending && (
 				<Suspense fallback={<Fallback />}>
 					<Result data={data.current} />

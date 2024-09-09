@@ -1,3 +1,5 @@
+import Menu from './(ui)/menu';
+
 export default function Page() {
-	return <p>hi</p>;
+	return <Menu />;
 }
