@@ -10,7 +10,7 @@ export function imageSize(image: any) {
 					resolve({ width: img.width, height: img.height, src: img.src });
 				};
 
-				img.src = fileReader.result;
+				img.src = String(fileReader.result);
 			};
 
 			fileReader.readAsDataURL(image);
