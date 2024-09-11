@@ -14,8 +14,8 @@ export default function Page() {
 				<p className="text-[25px]">
 					<span style={PaytoneOne.style}>iLearn</span> là một nền tảng học tập tiên tiến, được thiết
 					kế đặc biệt cho học sinh cấp 3 có nhu cầu học các môn <b>Toán, Lý, và Hóa</b>. Với tên gọi
-					mang ý nghĩa <b>"học tập thông minh"</b>, <span style={PaytoneOne.style}>iLearn</span> cam
-					kết mang đến trải nghiệm học tập tiện lợi và hiện đại cho người dùng.
+					mang ý nghĩa <b>{'học tập thông minh'}</b>, <span style={PaytoneOne.style}>iLearn</span>{' '}
+					cam kết mang đến trải nghiệm học tập tiện lợi và hiện đại cho người dùng.
 				</p>
 				<div className="grow grid grid-cols-[2fr_3fr] grid-rows-1 gap-x-8">
 					<div className="flex flex-col pb-12 childClass-[p]:text-justify">
