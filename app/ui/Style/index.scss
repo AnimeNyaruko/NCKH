@@ -120,6 +120,25 @@
 	}
 }
 
+.poster {
+	width: 100%;
+	height: min-content;
+	display: flex;
+	flex-direction: column;
+	row-gap: 1rem;
+	.title {
+		display: flex;
+		justify-content: space-between;
+
+		font-weight: bold;
+		font-size: 1.15em;
+
+		svg {
+			cursor: pointer;
+		}
+	}
+}
+
 .study-container::before {
 	content: '';
 	position: absolute;

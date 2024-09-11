@@ -5,7 +5,7 @@ import { revalidatePath } from 'next/cache';
 const db = createKysely<any>();
 
 export async function POST(req: NextRequest) {
-	const data: { title: string; src: string } = await req.json();
+	const data: { title: string; src: string; width: number; height: number } = await req.json();
 
 	const checker = await db
 		.selectFrom('posters')
@@ -24,6 +24,8 @@ export async function POST(req: NextRequest) {
 		.values({
 			title: data.title,
 			src: data.src,
+			w: data.width,
+			h: data.height,
 		})
 		.executeTakeFirst();
 

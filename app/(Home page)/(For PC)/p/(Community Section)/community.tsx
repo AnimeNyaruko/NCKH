@@ -15,7 +15,7 @@ export default function Study() {
 		<Link
 			href="/p/community"
 			className={`hover:bg-white/25 relative w-full h-full flex justify-center items-center gap-x-2 cursor-pointer border-b-2 border-solid border-white/25 hover:border-0`}>
-			<p className="w-fit h-fit text-white text-2xl font-bold">Học tập</p>
+			<p className="w-fit h-fit text-white text-2xl font-bold">Diễn đàn</p>
 			<Image alt="Study Image" src={CommunityIMG} className="w-auto h-1/2 object-contain" />
 		</Link>
 	);

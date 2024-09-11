@@ -3,11 +3,14 @@
 import { faBars, faPlus, faRobot } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import clsx from 'clsx';
+import Link from 'next/link';
+import { Dispatch, useState } from 'react';
+import { usePathname } from 'next/navigation';
 
-import { useState } from 'react';
-
-export default function Menu() {
+export default function Menu(props: { setAddComp: Dispatch<boolean> }) {
 	const [isDisplay, setDisplay] = useState(false);
+
+	const path = usePathname();
 
 	return (
 		<div className="fixed bottom-10 right-10 [&_svg]:text-2xl">
@@ -20,14 +23,19 @@ export default function Menu() {
 							'[transition:max-height_150ms_cubic-bezier(0,0,.5,1)_0ms] max-h-0': !isDisplay,
 						}
 					)}>
+					<Link href={`${path}/chatgpt`}>
+						<FontAwesomeIcon
+							icon={faRobot}
+							className="relative z-[1] px-2 pt-2 transition-colors cursor-pointer hover:text-slate-600"
+							fixedWidth
+						/>
+					</Link>
 					<FontAwesomeIcon
-						icon={faRobot}
-						className="relative z-[1] px-2 pt-2 transition-colors hover:cursor-pointer hover:text-slate-600"
-						fixedWidth
-					/>
-					<FontAwesomeIcon
+						onClick={() => {
+							props.setAddComp(true);
+						}}
 						icon={faPlus}
-						className="relative z-[1] px-2 pb-2 transition-colors hover:cursor-pointer hover:text-emerald-600"
+						className="relative z-[1] px-2 pb-2 transition-colors cursor-pointer hover:text-emerald-600"
 						fixedWidth
 					/>
 				</div>

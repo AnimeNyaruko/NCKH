@@ -12,17 +12,19 @@ async function base64toBlob(bs64: string) {
 
 export async function GET() {
 	const data = await db.selectFrom('posters').selectAll().execute();
-	const result: { title: any; src: string }[] = [];
+	const result: { title: any; src: string; width: number; height: number }[] = [];
 	await new Promise((resolve) => {
 		data.forEach(async (e, i, arr) => {
 			result.push({
 				title: e.title,
-				src: await base64toBlob(e.src),
+				src: e.src,
+				width: e.w,
+				height: e.h,
 			});
 			if (i == arr.length - 1) {
 				resolve('done');
 			}
 		});
 	});
-	return NextResponse.json(data);
+	return NextResponse.json(result);
 }
