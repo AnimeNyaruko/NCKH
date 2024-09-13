@@ -13,7 +13,7 @@ export default function Utility() {
 	const [timer, setTimer] = useState(3);
 	const router = useRouter();
 
-	if (timer == 0) router.push('/community');
+	if (timer == 0) router.push('/m/community');
 	useEffect(() => {
 		if (timer > 0) setTimeout(() => setTimer(timer - 1), 1000);
 	}, [timer]);
