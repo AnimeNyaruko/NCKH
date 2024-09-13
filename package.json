@@ -23,6 +23,7 @@
 		"@vercel/postgres-kysely": "^0.9.0",
 		"clsx": "^2.1.1",
 		"concurrently": "^8.2.2",
+		"device-detector-js": "^3.0.3",
 		"dotenv": "^16.4.5",
 		"html-react-parser": "^5.1.12",
 		"kysely": "^0.27.4",
