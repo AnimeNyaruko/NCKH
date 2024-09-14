@@ -154,6 +154,58 @@
             transform: rotate(1turn);
   }
 }
+/* HTML: <div class="loader"></div> */
+.fallback-cyan {
+  --w: 50px;
+  --bg-size-before: 12px 12px;
+  --bg-size-after: 8px 8px;
+}
+
+.fallback-cyan-sm {
+  --w: 25px;
+  --bg-size-before: 6px 6px;
+  --bg-size-after: 4px 4px;
+}
+
+.fallback-cyan {
+  width: var(--w);
+  aspect-ratio: 1;
+  display: grid;
+}
+
+.fallback-cyan::before,
+.fallback-cyan::after {
+  content: "";
+  grid-area: 1/1;
+  --c: no-repeat radial-gradient(farthest-side, #25b09b 92%, #0000);
+  background: var(--c) 50% 0, var(--c) 50% 100%, var(--c) 100% 50%, var(--c) 0 50%;
+  background-size: var(--bg-size-before);
+  -webkit-animation: l12 1s infinite;
+          animation: l12 1s infinite;
+}
+
+.fallback-cyan::before {
+  margin: 4px;
+  -webkit-filter: hue-rotate(45deg);
+          filter: hue-rotate(45deg);
+  background-size: var(--bg-size-after);
+  -webkit-animation-timing-function: linear;
+          animation-timing-function: linear;
+}
+
+@-webkit-keyframes l12 {
+  100% {
+    -webkit-transform: rotate(0.5turn);
+            transform: rotate(0.5turn);
+  }
+}
+
+@keyframes l12 {
+  100% {
+    -webkit-transform: rotate(0.5turn);
+            transform: rotate(0.5turn);
+  }
+}
 .poster {
   width: 100%;
   height: -webkit-min-content;

@@ -10,10 +10,11 @@ import IMGPic from '@/public/images/ImagePicture.png';
 import { imageSize } from '@/app/lib/utils';
 
 async function handleFileInput(
-	setStatus: Dispatch<SetStateAction<'success' | 'pending' | 'fail'>>,
+	setStatus: Dispatch<SetStateAction<'waiting' | 'success' | 'pending' | 'fail'>>,
 	SetErrorMSG: Dispatch<SetStateAction<string>>,
 	formData: FormData
 ) {
+	setStatus('pending');
 	const { title, img } = {
 		title: formData.get('title'),
 		img: formData.get('image'),
@@ -40,12 +41,19 @@ async function handleFileInput(
 		});
 }
 
-export default function Add(props: { setAddComp: Dispatch<boolean> }) {
-	const [status, setStatus] = useState<'success' | 'pending' | 'fail'>('pending');
+export default function Add(props: {
+	render: {
+		ReRender: boolean;
+		setRender: Dispatch<boolean>;
+	};
+	setAddComp: Dispatch<boolean>;
+}) {
+	const [status, setStatus] = useState<'waiting' | 'success' | 'pending' | 'fail'>('waiting');
 	const [imgDisplay, setIMGDisplay] = useState<any>();
 	const [ErrorMSG, setErrorMSG] = useState<string>('');
 
-	if (status == 'success') {
+	if (status === 'success') {
+		props.render.setRender(!props.render.ReRender);
 		props.setAddComp(false);
 	}
 
@@ -62,15 +70,15 @@ export default function Add(props: { setAddComp: Dispatch<boolean> }) {
 					fixedWidth
 					className="cursor-pointer text-slate-300 hover:text-red-600"
 				/>
-				<button
-					onClick={(e) => {
-						e.currentTarget.disabled = true;
-					}}
-					disabled={!(status == 'fail')}
-					type="submit"
-					className="font-semibold hover:font-bold text-cyan-400 cursor-pointer">
-					Đăng
-				</button>
+				{status === 'waiting' || status === 'fail' ? (
+					<button
+						type="submit"
+						className="font-semibold hover:font-bold text-cyan-400 cursor-pointer">
+						Đăng
+					</button>
+				) : (
+					<div className="fallback-cyan fallback-cyan-sm" />
+				)}
 			</div>
 			<p
 				id="errorMSG"
@@ -92,13 +100,14 @@ export default function Add(props: { setAddComp: Dispatch<boolean> }) {
 					<Image src={IMGPic} alt="Image input method" className="w-full h-auto object-contain" />
 					<input
 						onChange={async (e) => {
+							setStatus('pending');
 							const target = e.target;
 							if (target.files?.length) {
 								if (target.files[0].size > 1024 * 1024) {
 									setStatus('fail');
 									setErrorMSG('Ảnh phải < 1mb');
 									return;
-								} else setStatus('pending');
+								} else setStatus('waiting');
 								const imgsrc: any = await imageSize(target.files[0]);
 								setIMGDisplay(
 									<Image

@@ -19,3 +19,15 @@ export function imageSize(image: any) {
 		}
 	});
 }
+
+export function IMGtoURL(imageData: any) {
+	let w = imageData.width;
+	let h = imageData.height;
+	let canvas = document.createElement('canvas');
+	canvas.width = w;
+	canvas.height = h;
+	let ctx = canvas.getContext('2d');
+	ctx!.putImageData(imageData, 0, 0);
+
+	return canvas.toDataURL();
+}
