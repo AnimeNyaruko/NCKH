@@ -150,10 +150,7 @@ export default function Study() {
 	// }
 
 	return !isFulFilled ? (
-		<div
-			className={` grid grid-cols-1 grid-rows-3 gap-y-3 py-3 justify-items-center items-center w-screen h-fit bg-[${bgColor.normal}]`}>
-			{content}
-		</div>
+		<>{content}</>
 	) : (
 		<Suspense fallback={<p>loading...</p>}>
 			<div className="mx-auto mt-2 w-[90%] bg-slate-200 rounded-[1.5rem] pb-5">

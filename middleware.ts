@@ -9,10 +9,10 @@ export default async function middleware(req: NextRequest) {
 
 	const { device } = userAgent(req);
 
-	if (device.type != 'mobile' && ChildPath[1] !== 'p')
-		return NextResponse.redirect(new URL('/p', req.url));
-	if (device.type == 'mobile' && ChildPath[1] !== 'm')
-		return NextResponse.redirect(new URL('/m', req.url));
+	// if (device.type != 'mobile' && ChildPath[1] !== 'p')
+	// 	return NextResponse.redirect(new URL('/p', req.url));
+	// if (device.type == 'mobile' && ChildPath[1] !== 'm')
+	// 	return NextResponse.redirect(new URL('/m', req.url));
 
 	return NextResponse.next();
 }

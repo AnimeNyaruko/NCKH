@@ -222,3 +222,30 @@
 		transition: background-color 150ms linear, border 150ms linear;
 	}
 }
+
+.drop-shadow-white {
+	--drop-shadow: drop-shadow(2px 2px 6px rgb(255 255 255 / 25%))
+		drop-shadow(1px 1px 4px rgb(255 255 255 / 25%));
+	filter: var(--drop-shadow);
+}
+.drop-shadow-white-lg {
+	--drop-shadow: drop-shadow(4px 4px 8px rgb(255 255 255 / 25%))
+		drop-shadow(2px 2px 4px rgb(255 255 255 / 25%));
+	filter: var(--drop-shadow);
+}
+#MobileContainer {
+	position: relative;
+	background-image: url(/images/background.png);
+	background-size: cover;
+	background-position: center;
+	background-repeat: repeat-y;
+	z-index: 0;
+	&::before {
+		content: '';
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		background-color: rgba(0, 0, 0, 0.5);
+		z-index: -100;
+	}
+}
