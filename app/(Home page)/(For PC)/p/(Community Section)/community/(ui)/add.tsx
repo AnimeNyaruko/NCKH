@@ -63,7 +63,10 @@ export default function Add(props: { setAddComp: Dispatch<boolean> }) {
 					className="cursor-pointer text-slate-300 hover:text-red-600"
 				/>
 				<button
-					disabled={status == 'fail'}
+					onClick={(e) => {
+						e.currentTarget.disabled = true;
+					}}
+					disabled={!(status == 'fail')}
 					type="submit"
 					className="font-semibold hover:font-bold text-cyan-400 cursor-pointer">
 					Đăng

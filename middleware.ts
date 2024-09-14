@@ -7,14 +7,14 @@ export default async function middleware(req: NextRequest) {
 	const path = req.nextUrl.pathname;
 	const ChildPath = path.split('/');
 
-	const { device } = userAgent(req);
+	const device = userAgent(req);
 
-	console.log(device.type);
+	console.log(device);
 
-	if (device.type == 'desktop' && ChildPath[1] !== 'p')
-		return NextResponse.redirect(new URL('/p', req.url));
-	if (device.type != 'desktop' && ChildPath[1] !== 'm')
-		return NextResponse.redirect(new URL('/m', req.url));
+	// if (device.type == 'desktop' && ChildPath[1] !== 'p')
+	// 	return NextResponse.redirect(new URL('/p', req.url));
+	// if (device.type != 'desktop' && ChildPath[1] !== 'm')
+	// 	return NextResponse.redirect(new URL('/m', req.url));
 
 	return NextResponse.next();
 }
