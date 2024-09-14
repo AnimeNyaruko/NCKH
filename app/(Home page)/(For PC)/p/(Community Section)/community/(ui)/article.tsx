@@ -47,11 +47,21 @@ function Fallback() {
 }
 
 export default function Article({ render }: { render: any }) {
+	const [isClient, setIsClient] = useState(false);
+
+	useEffect(() => {
+		setIsClient(true);
+	}, []);
+
 	return (
-		<div className="relative w-full h-full p-8 grid auto-rows-min grid-cols-[repeat(4,1fr)] gap-5 overflow-y-auto">
-			<Suspense fallback={<Fallback />}>
-				<DisplayPoster />
-			</Suspense>
+		<div
+			className="relative w-full h-full p-8 grid auto-rows-min grid-cols-[repeat(4,1fr)] gap-5 overflow-y-auto"
+			suppressHydrationWarning>
+			{isClient && (
+				<Suspense fallback={<Fallback />}>
+					<DisplayPoster />
+				</Suspense>
+			)}
 		</div>
 	);
 }

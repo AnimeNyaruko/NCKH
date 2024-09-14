@@ -1,8 +1,8 @@
+import { unstable_noStore as noStore } from 'next/cache';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEllipsis } from '@fortawesome/free-solid-svg-icons';
 
 import DisplayImage from './DisplayImage';
-import { Dispatch } from 'react';
 
 function Poster(props: { key: any; title: string; src: string; width: number; height: number }) {
 	const { title, src, width, height } = props;
@@ -20,15 +20,14 @@ function Poster(props: { key: any; title: string; src: string; width: number; he
 }
 
 export default async function Display() {
+	noStore();
 	try {
 		const data = await fetch(`/api/community`, { method: 'GET' }).then((res) => res.json());
 
 		return (
 			<>
-				{data.map((e: any) => {
-					return (
-						<Poster key={e.title} title={e.title} src={e.src} width={e.width} height={e.height} />
-					);
+				{data.map((e: any, i: number) => {
+					return <Poster key={i} title={e.title} src={e.src} width={e.width} height={e.height} />;
 				})}
 			</>
 		);
