@@ -3,24 +3,14 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faRobot, faUser, faArrowUp, faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 
 import Link from 'next/link';
-import { Suspense, useRef, useState } from 'react';
+import { useRef, useState } from 'react';
 import React from 'react';
-import parse from 'html-react-parser';
-import showdown from 'showdown';
+import { ModifyData } from '@/app/lib/utils';
 
 const ButtonColor = {
 	focus: 'bg-blue-300',
 	unfocus: 'bg-blue-700',
 };
-
-function ModifyData(props: any) {
-	//*Markdown the chatbot response
-	const { text } = props;
-	const converter = new showdown.Converter();
-
-	//*Parse to html element
-	return parse(converter.makeHtml(text));
-}
 
 export default function Page() {
 	const SubmitButton = useRef<HTMLButtonElement>(null);
@@ -33,7 +23,7 @@ export default function Page() {
 			<header className="h-[10svh] w-screen">
 				<div className="w-min h-full flex items-center">
 					<Link
-						href={'/community'}
+						href={'/m/community'}
 						className="ml-2 top-1/2 w-min h-3/4 aspect-square rounded-full bg-blue-300 flex items-center justify-center">
 						<FontAwesomeIcon
 							icon={faArrowLeft}
@@ -75,7 +65,7 @@ export default function Page() {
 							</div>,
 						]);
 
-						//*Wait for 250ms to update component and then scroll to bottom
+						//*Wait for 50ms to update component and then scroll to bottom
 						setTimeout(() => {
 							ChatContainerElement.current!.scrollTo({
 								top: ChatContainerElement.current!.scrollHeight,

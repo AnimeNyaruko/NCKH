@@ -1,21 +1,12 @@
 'use client';
 
-import {
-	Dispatch,
-	MutableRefObject,
-	SetStateAction,
-	Suspense,
-	useEffect,
-	useRef,
-	useState,
-} from 'react';
+import { Dispatch, MutableRefObject, SetStateAction, Suspense, useRef, useState } from 'react';
 import Image from 'next/image';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import { Color } from '../color.config';
 import { faCaretLeft } from '@fortawesome/free-solid-svg-icons';
-import { faCircle } from '@fortawesome/free-regular-svg-icons';
 import Book from '@/public/images/book.png';
 import { BookLink } from '@/app/lib/definations';
 import { fetchAllAuthorLinks } from '@/app/lib/actions';

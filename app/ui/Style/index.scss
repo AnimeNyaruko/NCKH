@@ -44,7 +44,51 @@
 	font-weight: bold;
 }
 
+.botchat-pc {
+	display: grid;
+	grid-template-columns: 1fr;
+	grid-template-rows: auto;
+	row-gap: 0.5rem;
+	p {
+		text-align: justify;
+		padding: 0.5rem;
+		border-radius: 20px;
+		max-width: 75%;
+		height: fit-content;
+	}
+	.user {
+		width: 100%;
+		display: flex;
+		justify-content: flex-end;
+		p {
+			background-color: $base-color;
+		}
+	}
+	.bot {
+		display: flex;
+		column-gap: 0.5rem;
+		svg {
+			width: fit-content;
+			aspect-ratio: 1/1;
+
+			padding: 0.5rem;
+
+			background-color: gray;
+
+			border-radius: 100%;
+
+			align-self: flex-end;
+		}
+		p {
+			background-color: white;
+		}
+	}
+}
+
 .botchat {
+	p {
+		text-align: justify;
+	}
 	.user:first-child {
 		p {
 			margin-top: 0px;
@@ -54,8 +98,8 @@
 		justify-self: flex-end;
 		display: flex;
 		> p {
-			word-break: break-all;
-			width: 100%;
+			word-break: normal;
+			width: fit-content;
 			text-overflow: clip;
 
 			background-color: rgb(103 232 249);
@@ -247,5 +291,20 @@
 		height: 100%;
 		background-color: rgba(0, 0, 0, 0.5);
 		z-index: -100;
+	}
+}
+
+#gptcontainer {
+	z-index: 99;
+	&::before {
+		content: '';
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		width: 100%;
+		height: 100%;
+		z-index: -99;
+		backdrop-filter: blur(4px);
 	}
 }

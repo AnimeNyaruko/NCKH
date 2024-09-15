@@ -22,7 +22,7 @@ export default function Page({ children }: { children: React.ReactNode }) {
 				alt="Main page background"
 				className="absolute -z-[1] w-[105%] h-[105%] object-fill brightness-50"
 			/>
-			<div className={`relative h-[10vh] w-screen flex justify-between items-center px-5 `}>
+			<div className={`z-[100] relative h-[10vh] w-screen flex justify-between items-center px-5 `}>
 				<div className="w-fit h-full flex items-center justify-center px-5 border-b-2 border-solid border-white/25">
 					<p style={PaytoneOne.style} className="text-5xl text-white">
 						iLearn
