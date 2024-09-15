@@ -48,11 +48,11 @@ export default function DisplayShare(props: {
 						</TwitterShareButton>
 						<div
 							onClick={(e) => {
-								fetch(e.currentTarget.children[0].src, { cache: 'no-store' })
+								fetch(e.currentTarget.querySelector('img')!.src, { cache: 'no-store' })
 									.then((res) => res.blob())
 									.then((data) => {
 										// console.log(typeof data);
-										imageSize(data).then((img) => {
+										imageSize(data).then((img: any) => {
 											const a = document.createElement('a');
 											a.href = img.src;
 											a.download = title + '.png';
