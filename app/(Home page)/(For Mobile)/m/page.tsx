@@ -91,7 +91,7 @@ export default function Page() {
 					{'  '}
 					cam kết mang đến trải nghiệm học tập tiện lợi và hiện đại cho người dùng.
 				</p>
-				<p style={PaytoneOne.style} className="text-white text-2xl">
+				<p style={PaytoneOne.style} className="text-white text-xl">
 					TÍNH NĂNG NỔI BẬT
 				</p>
 				<div className="flex justify-between">
