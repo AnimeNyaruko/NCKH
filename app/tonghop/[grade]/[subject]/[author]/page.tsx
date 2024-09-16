@@ -42,14 +42,20 @@ export default function Page(req: any) {
 				/>
 			</div>
 			{urlArr.map((e: any, i: number) => {
-				return (
+				return e.url != '#' ? (
 					<Link
 						className="font-bold p-5 rounded-full border-solid border-white/50 border-4 bg-cyan-300 hover:bg-cyan-600"
 						target="_blank"
 						href={e.url}
 						key={e.url}>
-						{e.title + (e.url != '#' ? ` tập ${i + 1}` : '')}
+						{e.title + ` tập ${i + 1}`}
 					</Link>
+				) : (
+					<div
+						className="font-bold p-5 rounded-full border-solid border-white/50 border-4 bg-cyan-600"
+						key={e.url}>
+						{e.title}
+					</div>
 				);
 			})}
 		</div>
