@@ -103,7 +103,7 @@ export default function Page() {
 									onChange={async (e) => {
 										const target = e.target;
 										if (target.files?.length) {
-											if (target.files[0].size > 1024 * 1024) {
+											if (target.files[0].size > 1024 * 1024 * 10) {
 												setError('Ảnh phải < 1mb');
 												setState('fail');
 												return;
