@@ -48,7 +48,7 @@ export default function Page(req: any) {
 						target="_blank"
 						href={e.url}
 						key={e.url}>
-						{e.title + ` tập ${i + 1}`}
+						{e.title + e.url != '#' && ` tập ${i + 1}`}
 					</Link>
 				);
 			})}
