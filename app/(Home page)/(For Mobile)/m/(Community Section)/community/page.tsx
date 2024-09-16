@@ -6,7 +6,7 @@ import PlusIcon from '@/public/images/plus.png';
 
 import { Suspense, useEffect, useState } from 'react';
 import Image from 'next/image';
-import { usePathname } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import Link from 'next/link';
 import DisplayPost from './(ui)/DisplayPost';
 import Loading from './(ui)/loading';
@@ -20,18 +20,19 @@ export default function Page() {
 	}, []);
 
 	const path = usePathname();
+	const router = useRouter();
 	return (
 		<>
 			<div className="w-full h-fit">
 				<header className="top-0 w-full h-[10vh]">
 					<div className="grid grid-cols-2 grid-rows-1 items-center h-full">
-						<div className="w-fit h-[75%] aspect-square my-2 ml-2 select-none">
+						<Link href="/m" className="w-fit h-[75%] aspect-square my-2 ml-2 select-none">
 							<Image
 								src={logo}
 								alt="Music Icon"
 								className="text-white w-min h-min p-2 object-contain"
 							/>
-						</div>
+						</Link>
 						<div className="w-full h-fit flex justify-center items-center">
 							<p style={PaytoneOne.style} className="text-white text-2xl drop-shadow-white-lg">
 								Diễn đàn

@@ -26,7 +26,7 @@ export default function DisplayImage(props: { src: string; width: number; height
 					onClick={() => {
 						setShow(false);
 					}}
-					className="fixed flex justify-center items-center right-0 left-0 top-0 w-full h-dvh bg-black/75 backdrop-blur-sm">
+					className="z-[1000] fixed flex justify-center items-center right-0 left-0 top-0 w-full h-dvh bg-black/75 backdrop-blur-sm">
 					<Image alt="" src={src} width={width} height={height} className="w-3/4 mx-auto" />
 				</div>
 			)}

@@ -19,15 +19,15 @@ export default function Page() {
 				</p>
 				<div className="grow grid grid-cols-[2fr_3fr] grid-rows-1 gap-x-8">
 					<div className="flex flex-col pb-12 childClass-[p]:text-justify">
-						<p style={PaytoneOne.style} className="text-3xl flex justify-center">
+						<p style={PaytoneOne.style} className="text-3xl flex justify-center drop-shadow-white">
 							TÍNH NĂNG NỔI BẬT
 						</p>
 						<div className="grow grid grid-cols-1 grid-rows-2">
 							<div className="flex items-center">
 								<p>
-									Học tập: Cung cấp đường dẫn đến các sách giáo khoa điện tử, sách bài tập, và lời
-									giải từ các trang web học tập uy tín. Điều này giúp học sinh dễ dàng truy cập và
-									ôn tập kiến thức mọi lúc, mọi nơi.
+									<b>Học tập:</b> Cung cấp đường dẫn đến các sách giáo khoa điện tử, sách bài tập,
+									và lời giải từ các trang web học tập uy tín. Điều này giúp học sinh dễ dàng truy
+									cập và ôn tập kiến thức mọi lúc, mọi nơi.
 								</p>
 								<div className="w-full h-full flex items-center justify-center">
 									<Image src={Books} alt="Books" className="object-contain w-full h-full" />
@@ -38,15 +38,17 @@ export default function Page() {
 									<Image src={QnA} alt="Books" className="object-contain w-full h-full" />
 								</div>
 								<p>
-									Diễn đàn: Là nơi để cộng đồng học sinh chia sẻ tài liệu, hình ảnh và file bài học,
-									giúp tăng cường sự kết nối và học hỏi lẫn nhau mà không cần phải đăng nhập hay tạo
-									tài khoản.
+									<b>Diễn đàn:</b> Là nơi để cộng đồng học sinh chia sẻ tài liệu, hình ảnh và file
+									bài học, giúp tăng cường sự kết nối và học hỏi lẫn nhau mà không cần phải đăng
+									nhập hay tạo tài khoản.
 								</p>
 							</div>
 						</div>
 					</div>
 					<div className="flex flex-col gap-y-4 px-8 pb-16 childClass-[p]:text-justify">
-						<p style={PaytoneOne.style} className="text-3xl flex justify-center">
+						<p
+							style={PaytoneOne.style}
+							className="text-3xl flex justify-center mb-5 drop-shadow-white">
 							ĐỊNH HƯỚNG PHÁT TRIỂN TRONG TƯƠNG LAI
 						</p>
 						<div className="grow flex flex-col justify-between">

@@ -19,7 +19,8 @@ const bgColor = {
 
 export default function Page() {
 	const [selections, setSelectionsContent] = useState<any>(null);
-	const [isDisplay, setDisplayStatus] = useState(false);
+	const [isDisplay, setIsDisplay] = useState<boolean>(false);
+
 	return (
 		<div className="flex flex-col w-full grow">
 			<div
@@ -42,13 +43,10 @@ export default function Page() {
 			<div
 				id="selection_bar"
 				className={`relative mt-3 grid grid-cols-[1fr_1px_1fr] grid-rows-[fit-content] h-fit w-screen`}>
-				<button
-					type="button"
+				<div
 					onClick={() => {
-						setSelectionsContent(<Study />);
-					}}
-					onBlur={() => {
-						setSelectionsContent(null);
+						setSelectionsContent(!isDisplay ? <Study /> : <></>);
+						setIsDisplay(!isDisplay);
 					}}
 					className={`relative select-none w-full h-fit bg-[${bgColor.normal}] hover:bg-[${bgColor.hover}]`}>
 					<p
@@ -56,15 +54,12 @@ export default function Page() {
 						className="text-center text-white text-[30px] md:text-[37.5px] ">
 						Học tập
 					</p>
-				</button>
+				</div>
 				<div className="border border-l-white" />
-				<button
-					type="button"
+				<div
 					onClick={() => {
-						setSelectionsContent(<Utility />);
-					}}
-					onBlur={() => {
-						setSelectionsContent(null);
+						setSelectionsContent(!isDisplay ? <Utility /> : <></>);
+						setIsDisplay(!isDisplay);
 					}}
 					className={`relative select-none w-full h-fit bg-[${bgColor.normal}] hover:bg-[${bgColor.hover}]`}>
 					<p
@@ -72,11 +67,11 @@ export default function Page() {
 						className="text-center text-white text-[30px] md:text-[37.5px] ">
 						Diễn đàn
 					</p>
-				</button>
+				</div>
 
-				{selections && (
+				{isDisplay && (
 					<div
-						className={`absolute top-full grid grid-cols-1 grid-rows-1 gap-y-3 py-3 justify-items-center items-center w-screen h-fit bg-[${bgColor.normal}]`}>
+						className={`absolute z-[50] top-full grid grid-cols-1 grid-rows-1 gap-y-3 py-3 justify-items-center items-center w-screen h-fit bg-[${bgColor.normal}] rounded-b-xl`}>
 						{selections}
 					</div>
 				)}
@@ -91,14 +86,14 @@ export default function Page() {
 					{'  '}
 					cam kết mang đến trải nghiệm học tập tiện lợi và hiện đại cho người dùng.
 				</p>
-				<p style={PaytoneOne.style} className="text-white text-xl">
+				<p style={PaytoneOne.style} className="text-white drop-shadow-white text-xl">
 					TÍNH NĂNG NỔI BẬT
 				</p>
 				<div className="flex justify-between">
 					<p>
-						Học tập: Cung cấp đường dẫn đến các sách giáo khoa điện tử, sách bài tập, và lời giải từ
-						các trang web học tập uy tín. Điều này giúp học sinh dễ dàng truy cập và ôn tập kiến
-						thức mọi lúc, mọi nơi.
+						<b>Học tập:</b> Cung cấp đường dẫn đến các sách giáo khoa điện tử, sách bài tập, và lời
+						giải từ các trang web học tập uy tín. Điều này giúp học sinh dễ dàng truy cập và ôn tập
+						kiến thức mọi lúc, mọi nơi.
 					</p>
 					<div className="h-full w-full">
 						<Image alt="" src={Books} className="object-contain w-full h-full" />
@@ -109,8 +104,9 @@ export default function Page() {
 						<Image alt="" src={QnA} className="object-contain w-3/4 h-auto" />
 					</div>
 					<p>
-						Diễn đàn: Là nơi để cộng đồng học sinh chia sẻ tài liệu, hình ảnh và file bài học, giúp
-						tăng cường sự kết nối và học hỏi lẫn nhau mà không cần phải đăng nhập hay tạo tài khoản.
+						<b>Diễn đàn:</b> Là nơi để cộng đồng học sinh chia sẻ tài liệu, hình ảnh và file bài
+						học, giúp tăng cường sự kết nối và học hỏi lẫn nhau mà không cần phải đăng nhập hay tạo
+						tài khoản.
 					</p>
 				</div>
 			</div>

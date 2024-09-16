@@ -1,0 +1,570 @@
+import { db } from '@vercel/postgres';
+import { BookLink } from '../lib/definations';
+
+const client = await db.connect();
+
+function findBookLink(data: Required<Omit<BookLink, 'url'>>) {
+	let Grade = 0,
+		Subject = 0,
+		Author = 0,
+		isAns = 0,
+		isExer = 0;
+
+	switch (data!.Grade) {
+		case 11: {
+			Grade = 1;
+			break;
+		}
+		case 12: {
+			Grade = 2;
+			break;
+		}
+		default: {
+			Grade = 0;
+		}
+	}
+	switch (data!.Subject) {
+		case 'Math': {
+			Subject = 0;
+			break;
+		}
+		case 'Physic': {
+			Subject = 1;
+			break;
+		}
+		case 'Chemical': {
+			Subject = 2;
+			break;
+		}
+	}
+	switch (data!.Author) {
+		case 'CD': {
+			Author = 0;
+			break;
+		}
+		case 'KNTT': {
+			Author = 1;
+			break;
+		}
+		case 'CTST': {
+			Author = 2;
+			break;
+		}
+	}
+	isAns = data!.isAnswer ? 1 : 0;
+	isExer = data!.isExercise ? 1 : 0;
+
+	const url = [
+		//Grade10
+		[
+			//Math
+			[
+				//CD
+				[
+					//normal
+					[
+						'#',
+						//Answer
+						'#',
+					],
+					//Exercise
+					[
+						'#',
+						//Answer
+						'#',
+					],
+				],
+				//KNTT
+				[
+					//normal
+					[
+						'https://hanhtrangso.nxbgd.vn/sach-dien-tu/toan-10-tap-mot-11011',
+						//Answer
+						'https://hanhtrangso.nxbgd.vn/sach-dien-tu/toan-10-tap-hai-11012',
+					],
+					//Exercise
+					[
+						'https://hanhtrangso.nxbgd.vn/sach-dien-tu/bai-tap-toan-10-tap-mot-11140',
+						//Answer
+						'https://hanhtrangso.nxbgd.vn/sach-dien-tu/bai-tap-toan-10-tap-hai-11141',
+					],
+				],
+				//CTST
+				[
+					//normal
+					[
+						'https://hanhtrangso.nxbgd.vn/sach-dien-tu/toan-10-tap-mot-11093',
+						//Answer
+						'https://hanhtrangso.nxbgd.vn/sach-dien-tu/toan-10-tap-hai-11094',
+					],
+					//Exercise
+					[
+						'https://hanhtrangso.nxbgd.vn/sach-dien-tu/bai-tap-toan-10-tap-mot-11297',
+						//Answer
+						'https://hanhtrangso.nxbgd.vn/sach-dien-tu/bai-tap-toan-10-tap-hai-11298',
+					],
+				],
+			],
+			//Physic
+			[
+				//CD
+				[
+					//normal
+					[
+						'#',
+						//Answer
+						'#',
+					],
+					//Exercise
+					[
+						'#',
+						//Answer
+						'#',
+					],
+				],
+				//KNTT
+				[
+					//normal
+					[
+						'https://hanhtrangso.nxbgd.vn/sach-dien-tu/vat-li-10-11030',
+						//Answer
+						'#',
+					],
+					//Exercise
+					[
+						'https://hanhtrangso.nxbgd.vn/sach-dien-tu/bai-tap-vat-li-10-11146',
+						//Answer
+						'#',
+					],
+				],
+				//CTST
+				[
+					//normal
+					[
+						'https://hanhtrangso.nxbgd.vn/sach-dien-tu/vat-li-10-11097',
+						//Answer
+						'#',
+					],
+					//Exercise
+					[
+						'https://hanhtrangso.nxbgd.vn/sach-dien-tu/bai-tap-vat-li-10-11217',
+						//Answer
+						'#',
+					],
+				],
+			],
+			//Chemical
+			[
+				//CD
+				[
+					//normal
+					[
+						'#',
+						//Answer
+						'#',
+					],
+					//Exercise
+					[
+						'#',
+						//Answer
+						'#',
+					],
+				],
+				//KNTT
+				[
+					//normal
+					[
+						'https://hanhtrangso.nxbgd.vn/sach-dien-tu/hoa-hoc-10-11045',
+						//Answer
+						'#',
+					],
+					//Exercise
+					[
+						'https://hanhtrangso.nxbgd.vn/sach-dien-tu/bai-tap-hoa-hoc-10-11128',
+						//Answer
+						'#',
+					],
+				],
+				//CTST
+				[
+					//normal
+					[
+						'https://hanhtrangso.nxbgd.vn/sach-dien-tu/hoa-hoc-10-11084',
+						//Answer
+						'#',
+					],
+					//Exercise
+					[
+						'https://hanhtrangso.nxbgd.vn/sach-dien-tu/bai-tap-hoa-hoc-10-11186',
+						//Answer
+						'#',
+					],
+				],
+			],
+		],
+		//Grade11
+		[
+			//Math
+			[
+				//CD
+				[
+					//normal
+					[
+						'#',
+
+						//Answer
+						'#',
+					],
+					//Exercise
+					[
+						'#',
+						//Answer
+						'#',
+					],
+				],
+				//KNTT
+				[
+					//normal
+					[
+						'https://hanhtrangso.nxbgd.vn/sach-dien-tu/toan-11-tap-mot-11485',
+
+						//Answer
+						'https://hanhtrangso.nxbgd.vn/sach-dien-tu/toan-11-tap-hai-11486',
+					],
+					//Exercise
+					[
+						'https://hanhtrangso.nxbgd.vn/sach-dien-tu/bai-tap-toan-11-tap-mot-11643',
+						//Answer
+						'https://hanhtrangso.nxbgd.vn/sach-dien-tu/bai-tap-toan-11-tap-hai-11644',
+					],
+				],
+				//CTST
+				[
+					//normal
+					[
+						'https://hanhtrangso.nxbgd.vn/sach-dien-tu/toan-11-tap-mot-11434',
+
+						//Answer
+						'https://hanhtrangso.nxbgd.vn/sach-dien-tu/toan-11-tap-hai-11435',
+					],
+					//Exercise
+					[
+						'https://hanhtrangso.nxbgd.vn/sach-dien-tu/bai-tap-toan-11-tap-mot-11557',
+						//Answer
+						'https://hanhtrangso.nxbgd.vn/sach-dien-tu/bai-tap-toan-11-tap-hai-11558',
+					],
+				],
+			],
+			//Physic
+			[
+				//CD
+				[
+					//normal
+					[
+						'#',
+						//Answer
+						'#',
+					],
+					//Exercise
+					[
+						'#',
+						//Answer
+						'#',
+					],
+				],
+				//KNTT
+				[
+					//normal
+					[
+						'https://hanhtrangso.nxbgd.vn/sach-dien-tu/vat-li-11-11490',
+
+						//Answer
+						'#',
+					],
+					//Exercise
+					[
+						'https://hanhtrangso.nxbgd.vn/sach-dien-tu/bai-tap-vat-li-11-11648',
+						//Answer
+						'#',
+					],
+				],
+				//CTST
+				[
+					//normal
+					[
+						'https://hanhtrangso.nxbgd.vn/sach-dien-tu/vat-li-11-11450',
+
+						//Answer
+						'#',
+					],
+					//Exercise
+					[
+						'https://hanhtrangso.nxbgd.vn/sach-dien-tu/bai-tap-vat-li-11-11562',
+						//Answer
+						'#',
+					],
+				],
+			],
+			//Chemical
+			[
+				//CD
+				[
+					//normal
+					[
+						'#',
+
+						//Answer
+						'#',
+					],
+					//Exercise
+					[
+						'#',
+						//Answer
+						'#',
+					],
+				],
+				//KNTT
+				[
+					//normal
+					[
+						'https://hanhtrangso.nxbgd.vn/sach-dien-tu/hoa-hoc-11-11411',
+
+						//Answer
+						'#',
+					],
+					//Exercise
+					[
+						'https://hanhtrangso.nxbgd.vn/sach-dien-tu/bai-tap-hoa-hoc-11-11649',
+						//Answer
+						'#',
+					],
+				],
+				//CTST
+				[
+					//normal
+					[
+						'https://hanhtrangso.nxbgd.vn/sach-dien-tu/hoa-hoc-11-11444',
+
+						//Answer
+						'#',
+					],
+					//Exercise
+					[
+						'https://hanhtrangso.nxbgd.vn/sach-dien-tu/bai-tap-hoa-hoc-11-11563',
+						//Answer
+						'#',
+					],
+				],
+			],
+		],
+		//Grade12
+		[
+			//Math
+			[
+				//CD
+				[
+					//normal
+					[
+						'#',
+						//Answer
+						'#',
+					],
+					//Exercise
+					[
+						'#',
+						//Answer
+						'#',
+					],
+				],
+				//KNTT
+				[
+					//normal
+					[
+						'#',
+						//Answer
+						'#',
+					],
+					//Exercise
+					[
+						'#',
+						//Answer
+						'#',
+					],
+				],
+				//CTST
+				[
+					//normal
+					[
+						'#',
+						//Answer
+						'#',
+					],
+					//Exercise
+					[
+						'#',
+						//Answer
+						'#',
+					],
+				],
+			],
+			//Physic
+			[
+				//CD
+				[
+					//normal
+					[
+						'#',
+						//Answer
+						'#',
+					],
+					//Exercise
+					[
+						'#',
+						//Answer
+						'#',
+					],
+				],
+				//KNTT
+				[
+					//normal
+					[
+						'#',
+						//Answer
+						'#',
+					],
+					//Exercise
+					[
+						'#',
+						//Answer
+						'#',
+					],
+				],
+				//CTST
+				[
+					//normal
+					[
+						'#',
+						//Answer
+						'#',
+					],
+					//Exercise
+					[
+						'#',
+						//Answer
+						'#',
+					],
+				],
+			],
+			//Chemical
+			[
+				//CD
+				[
+					//normal
+					[
+						'#',
+						//Answer
+						'#',
+					],
+					//Exercise
+					[
+						'#',
+						//Answer
+						'#',
+					],
+				],
+				//KNTT
+				[
+					//normal
+					[
+						'#',
+						//Answer
+						'#',
+					],
+					//Exercise
+					[
+						'#',
+						//Answer
+						'#',
+					],
+				],
+				//CTST
+				[
+					//normal
+					[
+						'#',
+						//Answer
+						'#',
+					],
+					//Exercise
+					[
+						'#',
+						//Answer
+						'#',
+					],
+				],
+			],
+		],
+	];
+
+	return url[Grade][Subject][Author][isExer]![isAns];
+}
+
+async function seedLinkGrade() {
+	await client.sql`CREATE TABLE IF NOT EXISTS BookLinkShorten (
+                                                            Grade smallint,
+                                                            Subject text,
+                                                            Author text,
+                                                            isExercise BOOLEAN,
+                                                            part smallint,
+                                                            url text
+                                                            )`;
+
+	type findLink = Omit<BookLink, 'url'> & {
+		isAnswer: boolean;
+		isExercise: boolean;
+	};
+
+	let LinkList: findLink[] = [];
+	for (let i: number = 0; i < 3; i++) {
+		for (let j: number = 0; j < 3; j++) {
+			for (let k: number = 0; k < 3; k++) {
+				for (let isExer: number = 0; isExer < 2; isExer++) {
+					for (let isAns: number = 0; isAns < 2; isAns++) {
+						const temp: findLink = {
+							Grade: i == 0 ? 10 : i == 1 ? 11 : 12,
+							Subject: j == 0 ? 'Math' : j == 1 ? 'Physic' : 'Chemical',
+							Author: k == 0 ? 'CD' : k == 1 ? 'KNTT' : 'CTST',
+							isExercise: isExer ? true : false,
+							isAnswer: isAns ? true : false,
+						};
+						LinkList.push(temp);
+					}
+				}
+			}
+		}
+	}
+
+	const linkCreated = await Promise.all(
+		LinkList.map(async (i) => {
+			const url = findBookLink(i);
+			return await client.sql`INSERT INTO BookLinkShorten
+                        VALUES (${i.Grade},${i.Subject},${i.Author},${i.isExercise},${
+				i.isAnswer ? 1 : 0
+			},${url})`;
+		})
+	);
+	return linkCreated;
+}
+
+export async function GET() {
+	try {
+		await client.sql`BEGIN`;
+		await seedLinkGrade();
+		await client.sql`COMMIT`;
+		return Response.json({ message: 'Book link created' });
+	} catch (e) {
+		console.log(e);
+		await client.sql`ROLLBACK`;
+		return Response.json({ e }, { status: 500 });
+	}
+}

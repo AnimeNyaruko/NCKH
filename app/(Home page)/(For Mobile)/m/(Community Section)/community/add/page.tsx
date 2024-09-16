@@ -7,21 +7,21 @@ import { faX } from '@fortawesome/free-solid-svg-icons';
 
 import Image from 'next/image';
 import ImagePicture from '@/public/images/ImagePicture.png';
-import LinkPicture from '@/public/images/LinkPicture.png';
 
 import { MavenPro } from '@/app/ui/Style/font';
-import { usePathname } from 'next/navigation';
 import { generate } from 'shortid';
 import { imageSize } from '@/app/lib/utils';
 import { AppRouterInstance } from 'next/dist/shared/lib/app-router-context.shared-runtime';
+import Link from 'next/link';
 
 async function handleAddImage(
 	setError: Dispatch<any>,
-	setState: Dispatch<SetStateAction<'success' | 'pending' | 'fail'>>,
+	setState: Dispatch<SetStateAction<'pending' | 'waiting'>>,
 	router: AppRouterInstance,
 	formData: FormData
 ) {
 	setError('');
+	setState('pending');
 	const data: { title: any; imgFile: any } = {
 		title: formData.get('Title'),
 		imgFile: formData.get('ImageInput')!,
@@ -42,7 +42,7 @@ async function handleAddImage(
 		.then((data) => {
 			if (data.status === 'fail') {
 				setError(data.message);
-				setState('fail');
+				setState('waiting');
 			} else {
 				router.replace('/m/community');
 			}
@@ -52,9 +52,7 @@ async function handleAddImage(
 export default function Page() {
 	const [Display, setDisplay] = useState<any>();
 	const [Error, setError] = useState<any>();
-	const [state, setState] = useState<'success' | 'pending' | 'fail'>('pending');
-
-	const pathName = usePathname();
+	const [state, setState] = useState<'pending' | 'waiting'>('waiting');
 
 	const router = useRouter();
 
@@ -62,18 +60,16 @@ export default function Page() {
 		<div className="mx-3 pt-2 h-dvh flex flex-col">
 			<form action={handleAddImage.bind(null, setError, setState, router)}>
 				<div className="flex justify-between">
-					<FontAwesomeIcon
-						onClick={() => {
-							router.replace('/m/community');
-						}}
-						className=""
-						icon={faX}
-						size="lg"
-						fixedWidth
-					/>
-					<button type="submit" className="text-xl text-blue-500" style={MavenPro.bold.style}>
-						Đăng
-					</button>
+					<Link className="text-white drop-shadow-white-lg" href="/m/community">
+						<FontAwesomeIcon className="" icon={faX} size="lg" fixedWidth />
+					</Link>
+					{state == 'waiting' ? (
+						<button type="submit" className="text-xl text-blue-500" style={MavenPro.bold.style}>
+							Đăng
+						</button>
+					) : (
+						<div className="fallback-cyan fallback-cyan-sm"></div>
+					)}
 				</div>
 				<div className="mt-3">
 					<input
@@ -81,7 +77,7 @@ export default function Page() {
 						name="Title"
 						placeholder="TIÊU ĐỀ"
 						style={MavenPro.bold.style}
-						className="w-full text-2xl placeholder:opacity-50"
+						className="rounded-full px-3 py-2 w-full text-xl placeholder:opacity-50 placeholder:text-2xl"
 					/>
 					<hr className="border border-black opacity-35" />
 					<div className="mt-3 flex justify-between w-full h-fit">
@@ -105,11 +101,10 @@ export default function Page() {
 										if (target.files?.length) {
 											if (target.files[0].size > 1024 * 1024 * 10) {
 												setError('Ảnh phải < 1mb');
-												setState('fail');
+												setState('waiting');
 												return;
 											} else {
 												setError('');
-												setState('pending');
 											}
 											const imgsrc: any = await imageSize(target.files[0]);
 											setDisplay(

@@ -16,6 +16,7 @@ import LinkSelection from './LinkSelection';
 import MathIcon from '@/public/images/MathIcon.png';
 import PhysicIcon from '@/public/images/PhysicIcon.png';
 import ChemicalIcon from '@/public/images/ChemicalIcon.png';
+import { Color } from '@/app/(Home page)/(For PC)/p/color.config';
 
 const bgColor = {
 	normal: variables.colorCode,
@@ -32,6 +33,15 @@ function Selector({ onClick, text }: { onClick?: any; text: string }) {
 				className="transition-transform group-hover:rotate-180 text-white brightness-[.65] mr-4 text-[150%]"
 				icon={faCaretDown}
 			/>
+		</div>
+	);
+}
+
+function Fallback() {
+	return (
+		<div className="flex gap-x-5">
+			<p className="font-bold text-white">Đợi chúng tớ chút xíu nhé</p>
+			<div className="[&]:w-[25px] [&]:p-[5px] fallback"></div>
 		</div>
 	);
 }
@@ -140,19 +150,11 @@ export default function Study() {
 			</>
 		);
 	}
-	// async function temp() {
-	// 	await new Promise((res) => {
-	// 		setTimeout(() => {
-	// 			res('done');
-	// 		}, 5000);
-	// 	});
-	// 	return <p></p>;
-	// }
 
 	return !isFulFilled ? (
 		<>{content}</>
 	) : (
-		<Suspense fallback={<p>loading...</p>}>
+		<Suspense fallback={<Fallback />}>
 			<div className="mx-auto mt-2 w-[90%] bg-slate-200 rounded-[1.5rem] pb-5">
 				<div className="mx-auto w-[90%] grid grid-cols-1 grid-rows-6 gap-y-2">
 					<div className="self-center flex justify-between items-center">

@@ -295,7 +295,7 @@ export default function Study() {
 					if (isPending) setPendingState(false);
 				}}
 				className={`group-hover/drop:border-x-2 border-white/25 border-solid cursor-pointer relative w-full h-full flex justify-center items-center gap-x-2`}>
-				<p className="w-fit h-fit text-white text-2xl font-bold">Học tập</p>
+				<p className="w-fit h-fit text-white drop-shadow-white-lg text-2xl font-bold">Học tập</p>
 				<Image alt="Study Image" src={Book} className="w-auto h-1/2 object-contain" />
 			</button>
 			{!isPending && <SelectionComponent pending={setPendingState} data={data} />}
